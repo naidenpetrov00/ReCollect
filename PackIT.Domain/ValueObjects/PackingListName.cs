@@ -18,7 +18,7 @@
 
 		public static implicit operator string(PackingListName name) => name.Value;
 
-		public static implicit operator PackingListName(string name) => new(name);
+		public static implicit operator PackingListName(string name) => new (name);
 
 	}
 }

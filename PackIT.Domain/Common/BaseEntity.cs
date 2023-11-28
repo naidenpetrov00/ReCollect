@@ -2,38 +2,38 @@
 {
 	public abstract class BaseEntity<T>
 	{
-		private bool _versionIncremented;
-		private readonly List<IDomainEvent> _events = new();
+		private readonly List<IDomainEvent> events = new ();
+		private bool versionIncremented;
 
 		public T Id { get; protected set; }
-		public int Version { get; protected set; }
-		public IReadOnlyCollection<IDomainEvent> Events => _events;
 
+		public int Version { get; protected set; }
+
+		public IReadOnlyCollection<IDomainEvent> Events => this.events;
+
+		public void ClearEvents()
+			=> this.events.Clear();
 
 		protected void AddEvent(IDomainEvent @event)
 		{
-			if (!this._events.Any() && !_versionIncremented)
+			if (!this.events.Any() && !this.versionIncremented)
 			{
 				this.Version++;
-				this._versionIncremented = true;
+				this.versionIncremented = true;
 
-				this._events.Add(@event);
+				this.events.Add(@event);
 			}
 		}
 
-		public void ClearEvents()
-			=> this._events.Clear();
-
-
 		protected void Increment()
 		{
-			if (_versionIncremented)
+			if (this.versionIncremented)
 			{
 				return;
 			}
 
-			Version++;
-			_versionIncremented = true;
+			this.Version++;
+			this.versionIncremented = true;
 		}
 	}
 }

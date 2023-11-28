@@ -4,8 +4,5 @@
 	using PackIT.Domain.Entities;
 	using PackIT.Domain.ValueObjects;
 
-	internal record PackingItemUnpacked : IDomainEvent
-	{
-		public PackingItemUnpacked(PackingList packingList, PackingItem item) { }
-	}
+	internal record PackingItemUnpacked(PackingList packingList, PackingItem item) : IDomainEvent;
 }

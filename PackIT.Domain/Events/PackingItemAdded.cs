@@ -4,5 +4,5 @@
 	using PackIT.Domain.Entities;
 	using PackIT.Domain.ValueObjects;
 
-	public record PackingItemAdded(PackingList packingList, PackingItem packingItem) : IDomainEvent { }
+	public record PackingItemAdded(PackingList packingList, PackingItem packingItem) : IDomainEvent;
 }

@@ -1,7 +1,6 @@
 ﻿namespace PackIT.Domain.Common
 {
-public interface IDomainEvent
+	public interface IDomainEvent
 	{
-
 	}
 }

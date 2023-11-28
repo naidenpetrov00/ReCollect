@@ -3,6 +3,8 @@
 	public class EmptyPackingListItemNameException : Exception
 	{
 		public EmptyPackingListItemNameException()
-			: base("Packing item name cannot be empty.") { }
+			: base("Packing item name cannot be empty.")
+        {
+        }
 	}
 }

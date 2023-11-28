@@ -1,9 +1,6 @@
-﻿using System.Runtime.Serialization;
-
-namespace PackIT.Domain.Exceptions
+﻿namespace PackIT.Domain.Exceptions
 {
-	[Serializable]
-	internal class PackingItemNotFound : Exception
+	public class PackingItemNotFound : Exception
 	{
 
 		public PackingItemNotFound(string itemName)
