@@ -5,7 +5,7 @@
 	using PackIT.Domain.Policies;
 	using PackIT.Domain.ValueObjects;
 
-	internal class PackingListFactory : IPackingListFactory
+	public sealed class PackingListFactory : IPackingListFactory
 	{
 		private readonly IEnumerable<IPackingItemsPolicy> policies;
 
