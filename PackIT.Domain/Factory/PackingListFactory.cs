@@ -13,7 +13,7 @@
 			=> this.policies = policies;
 
 		public PackingList CreatePackingList(PackingListId id, PackingListName name, Localization localization)
-		=> new PackingList(id, name, localization);
+			=> new PackingList(id, name, localization);
 
 		public PackingList CreatePackingListWithDefaultItems(
 			PackingListId id,
