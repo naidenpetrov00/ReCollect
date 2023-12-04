@@ -9,21 +9,21 @@
 
 	internal sealed class RemovePackingListHandler : IRequestHandler<RemovePackingList>
 	{
-		private readonly IPackingListRepository _repository;
+		private readonly IPackingListRepository repository;
 
 		public RemovePackingListHandler(IPackingListRepository repository)
-			=> _repository = repository;
+			=> this.repository = repository;
 
 		public async Task Handle(RemovePackingList request, CancellationToken cancellationToken)
 		{
-			var packingList = await _repository.GetAsync(request.Id);
+			var packingList = await this.repository.GetAsync(request.Id);
 
 			if (packingList is null)
 			{
 				throw new PackingListNotFoundException(request.Id);
 			}
 
-			await _repository.DeleteAsync(packingList);
+			await this.repository.DeleteAsync(packingList);
 		}
 	}
 }

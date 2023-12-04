@@ -9,14 +9,14 @@
 
 	internal sealed class RemovePackingItemHandler : IRequestHandler<RemovePackingItem>
 	{
-		private readonly IPackingListRepository _repository;
+		private readonly IPackingListRepository repository;
 
 		public RemovePackingItemHandler(IPackingListRepository repository)
-			=> _repository = repository;
+			=> this.repository = repository;
 
 		public async Task Handle(RemovePackingItem request, CancellationToken cancellationToken)
 		{
-			var packingList = await _repository.GetAsync(request.PackingListId);
+			var packingList = await this.repository.GetAsync(request.PackingListId);
 
 			if (packingList is null)
 			{
@@ -25,7 +25,7 @@
 
 			packingList.UnpackItem(request.Name);
 
-			await _repository.UpdateAsync(packingList);
+			await this.repository.UpdateAsync(packingList);
 		}
 	}
 }

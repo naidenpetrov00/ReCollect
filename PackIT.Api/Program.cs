@@ -1,6 +1,7 @@
 namespace PackIT.Api
 {
 	using PackIT.Application;
+	using PackIT.Infrastructure;
 
 	public class Program
 	{
@@ -16,7 +17,8 @@ namespace PackIT.Api
 			builder.Services.AddSwaggerGen();
 
 			builder.Services.AddApplicationServices();
- 
+			builder.Services.AddInfrastructureServices();
+
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.

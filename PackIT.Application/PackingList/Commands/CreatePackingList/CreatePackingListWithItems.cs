@@ -52,9 +52,9 @@
 			var localization = new Localization(request.Localization.City, request.Localization.Country);
 			var weather = await this.weatherService.GetWeatherAsync(localization);
 
-			if (weather == null)
+			if (weather is null)
 			{
-				throw new MissingLocalizationWeather(localization);
+				throw new MissingLocalizationWeatherException(localization);
 			}
 
 			var packingList = this.packingListFactory.CreatePackingListWithDefaultItems(id, name, localization, days, weather.Temperature, gender);

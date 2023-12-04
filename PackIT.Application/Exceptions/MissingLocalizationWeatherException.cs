@@ -2,9 +2,9 @@
 {
 	using PackIT.Domain.ValueObjects;
 
-	public class MissingLocalizationWeather : Exception
+	public class MissingLocalizationWeatherException : Exception
 	{
-		public MissingLocalizationWeather(Localization localization)
+		public MissingLocalizationWeatherException(Localization localization)
 			: base($"Couldnt't fetch weather data for '{localization.Country}/{localization.City}'")
 		{
 		}

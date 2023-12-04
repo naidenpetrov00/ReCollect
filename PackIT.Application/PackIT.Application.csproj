@@ -16,8 +16,4 @@
     <ProjectReference Include="..\PackIT.Domain\PackIT.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="PackingList\Queries\" />
-  </ItemGroup>
-
 </Project>
