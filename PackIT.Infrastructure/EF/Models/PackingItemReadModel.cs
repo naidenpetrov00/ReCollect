@@ -7,6 +7,6 @@
 		public uint Quantity { get; set; }
 		public bool IsPacked { get; set; }
 
-		public virtual PackingItemReadModel PackingList { get; set; }
+		public virtual PackingListReadModel PackingList { get; set; }
 	}
 }

@@ -3,6 +3,7 @@
 	using PackIT.Domain.Entities;
 
 	using Microsoft.EntityFrameworkCore;
+	using System.Reflection;
 
 	internal sealed class ReadDbContext : DbContext
 	{
@@ -16,6 +17,8 @@
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.HasDefaultSchema("packing");
+			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
 			base.OnModelCreating(modelBuilder);
 		}
 	}
