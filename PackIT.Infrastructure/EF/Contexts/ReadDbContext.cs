@@ -1,9 +1,9 @@
 ﻿namespace PackIT.Infrastructure.EF.Contexts
 {
+	using PackIT.Infrastructure.EF.Config;
 	using PackIT.Domain.Entities;
 
 	using Microsoft.EntityFrameworkCore;
-	using System.Reflection;
 
 	internal sealed class ReadDbContext : DbContext
 	{
@@ -17,7 +17,8 @@
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.HasDefaultSchema("packing");
-			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+			var configuration = new ReadConfiguration();
+			modelBuilder.ApplyConfiguration(configuration);
 
 			base.OnModelCreating(modelBuilder);
 		}

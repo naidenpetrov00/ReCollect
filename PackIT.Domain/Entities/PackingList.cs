@@ -14,7 +14,7 @@
 
 		internal PackingList(PackingListId id, PackingListName name, Localization localization)
 		{
-			this.ListId = id;
+			this.Id = id;
 			this.name = name;
 			this.localization = localization;
 		}
@@ -25,7 +25,7 @@
 			this.AddItems(items);
 		}
 
-		public PackingListId ListId { get; private set; }
+		public PackingListId Id { get; private set; }
 
 		public void AddItem(PackingItem item)
 		{
