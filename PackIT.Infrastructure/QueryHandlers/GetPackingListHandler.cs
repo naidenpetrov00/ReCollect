@@ -1,25 +1,42 @@
 ﻿namespace PackIT.Infrastructure.QueryHandlers
 {
-	using PackIT.Application.PackingList.Queries;
-	using PackIT.Domain.Repositories;
-
-	using MediatR;
 	using PackIT.Infrastructure.EF.Models;
+	using PackIT.Infrastructure.EF.Contexts;
+	using PackIT.Application.PackingList.Queries;
+	using PackIT.Application.DTO;
 
-	public class GetPackingListHandler : IRequestHandler<GetPackingList, PackingListReadModel>
+	using Microsoft.EntityFrameworkCore;
+	using MediatR;
+
+	internal class GetPackingListHandler : IRequestHandler<GetPackingList, PackingListDto>
 	{
-		private readonly IPackingListRepository repository;
+		private readonly DbSet<PackingListReadModel> packingLists;
 
-		public GetPackingListHandler(IPackingListRepository repository)
+		public GetPackingListHandler(ReadDbContext context)
 		{
-			this.repository = repository;
+			this.packingLists = context.PackingLists;
 		}
 
-		public async Task<PackingListReadModel> Handle(GetPackingList request, CancellationToken cancellationToken)
-		{
-			var packingList = await this.repository.GetAsync(request.Id);
-
-			return packingList?.AsDto();
-		}
+		public async Task<PackingListDto> Handle(GetPackingList request, CancellationToken cancellationToken)
+			=> await this.packingLists
+					.Where(pl => pl.Id == request.Id)
+					.Select(pl => new PackingListDto
+					{
+						Id = pl.Id,
+						Name = pl.Name,
+						LocalizationDto = new LocalizationDto
+						{
+							City = pl.Localization.City,
+							Country = pl.Localization.Country,
+						},
+						Items = pl.Items.Select(pi => new PackingItemDto
+						{
+							Name = pi.Name,
+							Quantity = pi.Quantity,
+							IsPacked = pi.IsPacked,
+						})
+					})
+					.AsNoTracking()
+					.SingleOrDefaultAsync();
 	}
 }

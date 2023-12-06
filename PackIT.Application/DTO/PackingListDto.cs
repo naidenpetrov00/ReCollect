@@ -8,7 +8,7 @@
 
 		public string Name { get; set; }
 
-		public Localization Localization { get; set; }
+		public LocalizationDto LocalizationDto { get; set; }
 
         public IEnumerable<PackingItemDto> Items { get; set; }
     }

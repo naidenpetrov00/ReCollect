@@ -9,7 +9,7 @@
 
 	internal sealed class WriteDbContext : DbContext
 	{
-		public DbSet<PackingListReadModel> PackingLists { get; set; }
+		public DbSet<PackingList> PackingLists { get; set; }
 
 		public WriteDbContext()
 		{

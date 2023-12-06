@@ -1,17 +1,51 @@
 ﻿namespace PackIT.Infrastructure.QueryHandlers
 {
+	using PackIT.Infrastructure.EF.Models;
+	using PackIT.Infrastructure.EF.Contexts;
+	using PackIT.Application.DTO;
 	using PackIT.Application.PackingList.Queries;
 
+	using Microsoft.EntityFrameworkCore;
 	using MediatR;
-	using PackIT.Infrastructure.EF.Models;
 
-	public class SearchPackingListsHandler : IRequestHandler<SearchPackingLists, IEnumerable<PackingListReadModel>>
+	internal sealed class SearchPackingListsHandler : IRequestHandler<SearchPackingLists, IEnumerable<PackingListDto>>
 	{
-		private readonly PackItDbContext;
+		private readonly DbSet<PackingListReadModel> packingLists;
 
-		public async Task<IEnumerable<PackingListReadModel>> Handle(SearchPackingLists request, CancellationToken cancellationToken)
+		public SearchPackingListsHandler(ReadDbContext context)
 		{
-			throw new NotImplementedException();
+			this.packingLists = context.PackingLists;
+		}
+
+		public async Task<IEnumerable<PackingListDto>> Handle(SearchPackingLists request, CancellationToken cancellationToken)
+		{
+			var dbQuery = this.packingLists.Include(x => x.Items).AsQueryable();
+
+			if (request.SearchPhrase is not null)
+			{
+				// Warning (Ef may not be able to convert)
+				dbQuery = dbQuery.Where(pl => pl.Name.Contains(request.SearchPhrase, StringComparison.OrdinalIgnoreCase));
+			}
+
+			return await dbQuery
+				.Select(pl => new PackingListDto
+				{
+					Id = pl.Id,
+					Name = pl.Name,
+					LocalizationDto = new LocalizationDto
+					{
+						City = pl.Localization.City,
+						Country = pl.Localization.Country,
+					},
+					Items = pl.Items.Select(pi => new PackingItemDto
+					{
+						Name = pi.Name,
+						Quantity = pi.Quantity,
+						IsPacked = pi.IsPacked,
+					})
+				})
+				.AsNoTracking()
+				.ToListAsync();
 		}
 	}
 }

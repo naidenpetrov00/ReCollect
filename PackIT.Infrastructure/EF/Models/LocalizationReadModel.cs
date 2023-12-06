@@ -17,6 +17,6 @@
 		}
 
 		public override string ToString()
-			=> $"{this.City}, {this.Country}";
+			=> $"{this.City},{this.Country}";
 	}
 }

@@ -7,10 +7,10 @@
 	{
 		Task<PackingList> GetAsync(PackingListId id);
 
-		Task<PackingList> AddAsync(PackingList packingList);
+		Task AddAsync(PackingList packingList);
 
-		Task<PackingList> UpdateAsync(PackingList packingList);
+		Task UpdateAsync(PackingList packingList);
 
-		Task<PackingList> DeleteAsync(PackingList packingList);
+		Task DeleteAsync(PackingList packingList);
 	}
 }
