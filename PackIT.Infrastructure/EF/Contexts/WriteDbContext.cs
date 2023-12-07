@@ -1,6 +1,5 @@
 ﻿namespace PackIT.Infrastructure.EF.Contexts
 {
-	using PackIT.Infrastructure.EF.Models;
 	using PackIT.Infrastructure.EF.Configurations;
 	using PackIT.Domain.Entities;
 	using PackIT.Domain.ValueObjects;
@@ -11,7 +10,8 @@
 	{
 		public DbSet<PackingList> PackingLists { get; set; }
 
-		public WriteDbContext()
+		public WriteDbContext(DbContextOptions<WriteDbContext> options)
+			: base(options)
 		{
 		}
 

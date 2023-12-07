@@ -1,7 +1,7 @@
 ﻿namespace PackIT.Infrastructure.EF.Contexts
 {
-	using PackIT.Infrastructure.EF.Config;
 	using PackIT.Infrastructure.EF.Models;
+	using PackIT.Infrastructure.EF.Configurations;
 
 	using Microsoft.EntityFrameworkCore;
 
