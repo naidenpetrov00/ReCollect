@@ -20,6 +20,8 @@
 			services.AddScoped<IPackingListRepository, PostgresPackingListRepository>();
 			services.AddScoped<IPackingListReadService, PostgresPackingListReadService>();
 
+			services.AddHostedService<AppInitializer>();
+
 			var postgresOptions = configuration.GetOptions<PostgresOptions>("Postgres");
 			services.AddDbContext<ReadDbContext>(ctx => ctx.UseNpgsql(postgresOptions.ConnectionString));
 			services.AddDbContext<WriteDbContext>(ctx => ctx.UseNpgsql(postgresOptions.ConnectionString));
