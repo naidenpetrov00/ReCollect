@@ -9,7 +9,8 @@
     {
         public void Configure(EntityTypeBuilder<PackingListReadModel> builder)
         {
-            builder.HasKey(x => x.Id);
+			builder.ToTable("PackingLists");
+			builder.HasKey(x => x.Id);
             builder
                 .Property(pl => pl.Localization)
                 .HasConversion(pl => pl.ToString(), pl => LocalizationReadModel.Create(pl));

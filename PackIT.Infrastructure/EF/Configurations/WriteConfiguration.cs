@@ -30,7 +30,8 @@
 
             builder
                 .HasMany(typeof(PackingItem), "items");
-        }
+			builder.ToTable("PackingLists");
+		}
 
         public void Configure(EntityTypeBuilder<PackingItem> builder)
         {
