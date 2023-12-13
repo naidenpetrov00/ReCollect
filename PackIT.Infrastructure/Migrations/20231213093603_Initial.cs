@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace PackIT.Infrastructure.EF.Migrations
+namespace PackIT.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Init_Read : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,9 +20,9 @@ namespace PackIT.Infrastructure.EF.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Version = table.Column<int>(type: "integer", nullable: false),
+                    Localization = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    Localization = table.Column<string>(type: "text", nullable: false)
+                    Version = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,7 +30,7 @@ namespace PackIT.Infrastructure.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PackingItemReadModel",
+                name: "PackingItems",
                 schema: "packing",
                 columns: table => new
                 {
@@ -38,24 +38,23 @@ namespace PackIT.Infrastructure.EF.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Quantity = table.Column<long>(type: "bigint", nullable: false),
                     IsPacked = table.Column<bool>(type: "boolean", nullable: false),
-                    PackingListId = table.Column<Guid>(type: "uuid", nullable: false)
+                    PackingListId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PackingItemReadModel", x => x.Id);
+                    table.PrimaryKey("PK_PackingItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PackingItemReadModel_PackingLists_PackingListId",
+                        name: "FK_PackingItems_PackingLists_PackingListId",
                         column: x => x.PackingListId,
                         principalSchema: "packing",
                         principalTable: "PackingLists",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_PackingItemReadModel_PackingListId",
+                name: "IX_PackingItems_PackingListId",
                 schema: "packing",
-                table: "PackingItemReadModel",
+                table: "PackingItems",
                 column: "PackingListId");
         }
 
@@ -63,7 +62,7 @@ namespace PackIT.Infrastructure.EF.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PackingItemReadModel",
+                name: "PackingItems",
                 schema: "packing");
 
             migrationBuilder.DropTable(

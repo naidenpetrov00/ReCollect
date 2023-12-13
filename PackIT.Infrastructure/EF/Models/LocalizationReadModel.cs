@@ -8,7 +8,7 @@
 
 		public static LocalizationReadModel Create(string value)
 		{
-			var splitLocalization = value.Split(", ");
+			var splitLocalization = value.Split(",");
 			return new LocalizationReadModel
 			{
 				City = splitLocalization[0],

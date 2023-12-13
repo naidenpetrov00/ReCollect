@@ -18,7 +18,8 @@
 		{
 			modelBuilder.HasDefaultSchema("packing");
 			var configuration = new ReadConfiguration();
-			modelBuilder.ApplyConfiguration(configuration);
+			modelBuilder.ApplyConfiguration<PackingItemReadModel>(configuration);
+			modelBuilder.ApplyConfiguration<PackingListReadModel>(configuration);
 
 			base.OnModelCreating(modelBuilder);
 		}

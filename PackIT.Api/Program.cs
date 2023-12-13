@@ -19,6 +19,7 @@ namespace PackIT.Api
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 			builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Load("PackIT.Application")));
+			builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Load("PackIT.Infrastructure")));
 			builder.Services.AddApplicationServices();
 			builder.Services.AddInfrastructureServices(builder.Configuration);
 
@@ -31,6 +32,7 @@ namespace PackIT.Api
 				app.UseSwaggerUI();
 			}
 
+			app.UseErrorHandling();
 			app.UseHttpsRedirection();
 
 			app.UseAuthorization();

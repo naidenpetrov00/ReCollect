@@ -12,6 +12,8 @@
 			{
 				throw new EmptyPackingListIdException();
 			}
+
+			this.Value = value;
 		}
 
 		public static implicit operator PackingListId(Guid id)

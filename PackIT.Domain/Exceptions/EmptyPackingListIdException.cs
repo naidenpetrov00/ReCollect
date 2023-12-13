@@ -3,7 +3,7 @@
 	internal class EmptyPackingListIdException : Exception
 	{
 		public EmptyPackingListIdException()
-			: base("Packing list id cannot be empty")
+			: base("Packing list ID cannot be empty")
         {
         }
 	}
