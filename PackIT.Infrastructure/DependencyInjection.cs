@@ -4,12 +4,16 @@
 	using PackIT.Infrastructure.EF.Contexts;
 	using PackIT.Infrastructure.EF.Repositories;
 	using PackIT.Infrastructure.Services;
+	using PackIT.Infrastructure.Logging;
+
 	using PackIT.Application.Services;
+	 
 	using PackIT.Domain.Repositories;
 
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
+	using MediatR;
 
 	public static class DependencyInjection
 	{
@@ -25,6 +29,8 @@
 			var postgresOptions = configuration.GetOptions<PostgresOptions>("Postgres");
 			services.AddDbContext<ReadDbContext>(ctx => ctx.UseNpgsql(postgresOptions.ConnectionString));
 			services.AddDbContext<WriteDbContext>(ctx => ctx.UseNpgsql(postgresOptions.ConnectionString));
+
+			services.TryDecorate(typeof(IRequestHandler<>), typeof(LoggingCommandHandlerDecorator<>));
 
 			return services;
 		}

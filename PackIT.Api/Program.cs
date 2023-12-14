@@ -1,9 +1,10 @@
 namespace PackIT.Api
 {
-	using Microsoft.Extensions.DependencyInjection;
-	using PackIT.Application;
-	using PackIT.Application.PackingList.Commands.AddPackingItem;
+	using PackIT.Api.Infrastructure.Exceptions;
 	using PackIT.Infrastructure;
+	using PackIT.Application;
+
+	using Microsoft.Extensions.DependencyInjection;
 	using System.Reflection;
 
 	public class Program
@@ -20,6 +21,9 @@ namespace PackIT.Api
 			builder.Services.AddSwaggerGen();
 			builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Load("PackIT.Application")));
 			builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Load("PackIT.Infrastructure")));
+
+			builder.Services.AddScoped<ExceptionMiddleware>();
+
 			builder.Services.AddApplicationServices();
 			builder.Services.AddInfrastructureServices(builder.Configuration);
 
@@ -32,8 +36,9 @@ namespace PackIT.Api
 				app.UseSwaggerUI();
 			}
 
-			app.UseErrorHandling();
+			//app.UseErrorHandling();
 			app.UseHttpsRedirection();
+			app.UseMiddleware<ExceptionMiddleware>();
 
 			app.UseAuthorization();
 
