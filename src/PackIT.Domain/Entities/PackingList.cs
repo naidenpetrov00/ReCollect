@@ -31,7 +31,7 @@
 		{
 			if (this.items.Contains(item))
 			{
-				throw new PackingItemExists(this.name, item.Name);
+				throw new PackingItemExistsException(this.name, item.Name);
 			}
 
 			this.items.AddLast(item);
@@ -70,7 +70,7 @@
 			var item = this.items.SingleOrDefault(item => item.Name == itemName);
 			if (item is null)
 			{
-				throw new PackingItemNotFound(itemName);
+				throw new PackingItemNotFoundException(itemName);
 			}
 
 			return item;

@@ -1,8 +1,8 @@
 ﻿namespace PackIT.Domain.Exceptions
 {
-	public class PackingItemExists : Exception
+	public class PackingItemExistsException : Exception
 	{
-		public PackingItemExists(string listName, string itemName)
+		public PackingItemExistsException(string listName, string itemName)
 			: base($"Packing list: '${listName}' already defined item: '${itemName}'")
         {
         }
