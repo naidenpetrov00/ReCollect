@@ -1,9 +1,13 @@
 ﻿namespace Domain.UnitTests
 {
 	using PackIT.Domain.Entities;
+	using PackIT.Domain.Exceptions;
 	using PackIT.Domain.Factory;
 	using PackIT.Domain.Policies;
 	using PackIT.Domain.ValueObjects;
+	using PackIT.Domain.Events;
+
+	using FluentAssertions;
 	using Xunit;
 
 	public class PackingListTests
@@ -11,7 +15,27 @@
 		[Fact]
 		public void AddItem_Throws_PackingItemExistsException_WhenItemWithSameNameExists()
 		{
+			var packingList = this.GetPackingList();
+			packingList.AddItem(new PackingItem("Item 1", 1));
 
+			var exception = Record.Exception(() => packingList.AddItem(new PackingItem("Item 1", 1)));
+
+			exception.Should().NotBeNull();
+			exception.Should().BeOfType<PackingItemExistsException>();
+		}
+
+		[Fact]
+		public void AddItem_Adds_PackingItemAdded_DomainEvent_OnSuccess()
+		{
+			var packingList = this.GetPackingList();
+
+			var exception = Record.Exception(() => packingList.AddItem(new PackingItem("Item 1", 1)));
+
+			exception.Should().BeNull();
+			packingList.Events.Count.Should().Be(1);
+
+			var @event = packingList.Events.FirstOrDefault() as PackingItemAdded;
+			@event.Should().NotBeNull();
 		}
 
 		private readonly IPackingListFactory factory;

@@ -1,16 +1,16 @@
 ﻿namespace PackIT.Application.PackingList.Commands.CreatePackingList
 {
+	using PackIT.Application.Services;
+	using PackIT.Application.Exceptions;
+
 	using PackIT.Domain.Enums;
 	using PackIT.Domain.Factory;
 	using PackIT.Domain.Repositories;
-
-	using PackIT.Application.Services;
-	using PackIT.Application.Exceptions;
+	using PackIT.Domain.ValueObjects;
 
 	using System.Threading;
 	using System.Threading.Tasks;
 	using MediatR;
-	using PackIT.Domain.ValueObjects;
 
 	public record CreatePackingListWithItems(
 		Guid Id,
