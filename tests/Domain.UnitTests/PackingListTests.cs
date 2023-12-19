@@ -1,14 +1,14 @@
 ﻿namespace Domain.UnitTests
 {
-	using PackIT.Domain.Entities;
-	using PackIT.Domain.Exceptions;
-	using PackIT.Domain.Factory;
-	using PackIT.Domain.Policies;
-	using PackIT.Domain.ValueObjects;
 	using PackIT.Domain.Events;
+	using PackIT.Domain.Factory;
+	using PackIT.Domain.Entities;
+	using PackIT.Domain.Policies;
+	using PackIT.Domain.Exceptions;
+	using PackIT.Domain.ValueObjects;
 
-	using FluentAssertions;
 	using Xunit;
+	using FluentAssertions;
 
 	public class PackingListTests
 	{

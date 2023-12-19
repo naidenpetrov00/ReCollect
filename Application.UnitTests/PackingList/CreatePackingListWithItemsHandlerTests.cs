@@ -1,21 +1,21 @@
 ﻿namespace Application.UnitTests.PackingList
 {
-	using PackIT.Application.PackingList.Commands.CreatePackingList;
 	using PackIT.Application.Services;
 	using PackIT.Application.Exceptions;
+	using PackIT.Application.DTO.External;
+	using PackIT.Application.PackingList.Commands.CreatePackingList;
 
-	using PackIT.Domain.Repositories;
 	using PackIT.Domain.Enums;
 	using PackIT.Domain.Factory;
 	using PackIT.Domain.Entities;
+	using PackIT.Domain.ValueObjects;
+	using PackIT.Domain.Repositories;
 
 	using MediatR;
 	using NSubstitute;
 	using Xunit;
-	using FluentAssertions;
-	using PackIT.Domain.ValueObjects;
-	using PackIT.Application.DTO.External;
 	using Xunit.Abstractions;
+	using FluentAssertions;
 
 	public class CreatePackingListWithItemsHandlerTests
 	{
@@ -103,5 +103,5 @@
 				this.weatherService);
 			this.testOutput = testOutput;
 		}
-	}
+    }
 }
