@@ -4,6 +4,7 @@
 	using PackIT.Domain.Enums;
 	using PackIT.Domain.Policies;
 	using PackIT.Domain.ValueObjects;
+	using PackIT.Domain.ValueObjects.PackingLists;
 
 	public sealed class PackingListFactory : IPackingListFactory
 	{
@@ -13,7 +14,14 @@
 			=> this.policies = policies;
 
 		public PackingList CreatePackingList(PackingListId id, PackingListName name, Localization localization)
-			=> new PackingList(id, name, localization);
+		{
+			return new PackingList
+			{
+				Id = id,
+				Name = name,
+				Localization = localization
+			};
+		}
 
 		public PackingList CreatePackingListWithDefaultItems(
 			PackingListId id,

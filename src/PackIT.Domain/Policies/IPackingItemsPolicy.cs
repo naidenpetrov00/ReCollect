@@ -1,6 +1,6 @@
 ﻿namespace PackIT.Domain.Policies
 {
-	using PackIT.Domain.ValueObjects;
+	using PackIT.Domain.ValueObjects.PackingItems;
 
 	public interface IPackingItemsPolicy
 	{

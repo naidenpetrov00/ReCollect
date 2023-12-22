@@ -1,8 +1,5 @@
 ﻿namespace PackIT.Domain.Policies.Gender
 {
-	using PackIT.Domain.Enums;
-	using PackIT.Domain.ValueObjects;
-
 	internal class MaleGenderPolicy : IPackingItemsPolicy
 	{
 		public IEnumerable<PackingItem> GenerateItems(PolicyData data)

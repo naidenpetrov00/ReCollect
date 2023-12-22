@@ -1,7 +1,5 @@
 ﻿namespace PackIT.Application.DTO
 {
-	using PackIT.Domain.ValueObjects;
-
 	public class PackingListDto
 	{
 		public Guid Id { get; set; }

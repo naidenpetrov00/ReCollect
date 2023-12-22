@@ -1,23 +1,24 @@
 ﻿namespace Application.UnitTests.PackingList
 {
-	using PackIT.Application.Services;
-	using PackIT.Application.Exceptions;
-	using PackIT.Application.DTO.External;
-	using PackIT.Application.PackingList.Commands.CreatePackingList;
+    using PackIT.Application.Services;
+    using PackIT.Application.Exceptions;
+    using PackIT.Application.DTO.External;
+    using PackIT.Application.PackingList.Commands.CreatePackingList;
 
-	using PackIT.Domain.Enums;
-	using PackIT.Domain.Factory;
-	using PackIT.Domain.Entities;
-	using PackIT.Domain.ValueObjects;
-	using PackIT.Domain.Repositories;
+    using PackIT.Domain.Enums;
+    using PackIT.Domain.Factory;
+    using PackIT.Domain.Entities;
+    using PackIT.Domain.ValueObjects;
+    using PackIT.Domain.Repositories;
 
-	using MediatR;
-	using NSubstitute;
-	using Xunit;
-	using Xunit.Abstractions;
-	using FluentAssertions;
+    using MediatR;
+    using NSubstitute;
+    using Xunit;
+    using Xunit.Abstractions;
+    using FluentAssertions;
+    using PackIT.Domain.ValueObjects.PackingLists;
 
-	public class CreatePackingListWithItemsHandlerTests
+    public class CreatePackingListWithItemsHandlerTests
 	{
 		private readonly IRequestHandler<CreatePackingListWithItems> commandHandler;
 		private readonly IPackingListRepository repository;

@@ -2,7 +2,6 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using PackIT.Domain.ValueObjects;
 
 	internal sealed class BasicPolicy : IPackingItemsPolicy
 	{

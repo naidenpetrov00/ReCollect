@@ -1,13 +1,15 @@
 ﻿namespace PackIT.Application.PackingList.Commands.AddPackingItem
 {
 	using PackIT.Application.Exceptions;
-	using PackIT.Domain.ValueObjects;
+
 	using PackIT.Domain.Repositories;
+	using PackIT.Domain.ValueObjects.PackingItems;
 
 	using System.Threading;
 	using MediatR;
 
 	public record AddPackingItem(Guid PackingListId, string Name, uint Quantity) : IRequest;
+
 
 	internal sealed class AddPackingItemHandler : IRequestHandler<AddPackingItem>
 	{
@@ -25,7 +27,11 @@
 				throw new PackingListNotFoundException(request.PackingListId);
 			}
 
-			var packingItem = new PackingItem(request.Name, request.Quantity);
+			var packingItem = new PackingItem
+			{
+				Name = request.Name,
+				Quantity = request.Quantity,
+			};
 			packingList.AddItem(packingItem);
 
 			await this.repository.UpdateAsync(packingList);

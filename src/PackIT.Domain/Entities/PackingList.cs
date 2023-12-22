@@ -1,40 +1,33 @@
 ﻿namespace PackIT.Domain.Entities
 {
-	using System.Collections.Generic;
 	using PackIT.Domain.Common;
 	using PackIT.Domain.Events;
 	using PackIT.Domain.Exceptions;
-	using PackIT.Domain.ValueObjects;
+	using PackIT.Domain.ValueObjects.PackingItems;
+	using PackIT.Domain.ValueObjects.PackingLists;
+
+	using System.Collections.Generic;
 
 	public class PackingList : BaseEntity<PackingListId>
 	{
-		private readonly LinkedList<PackingItem> items = new LinkedList<PackingItem>();
-		private PackingListName name;
-		private Localization localization;
+		public PackingListId Id { get; set; }
 
-		internal PackingList(PackingListId id, PackingListName name, Localization localization)
-		{
-			this.Id = id;
-			this.name = name;
-			this.localization = localization;
-		}
+		public PackingListName Name { get; set; }
 
-		private PackingList(PackingListId id, PackingListName name, Localization localization, LinkedList<PackingItem> items)
-			: this(id, name, localization)
-		{
-			this.AddItems(items);
-		}
+		public Localization Localization { get; set; }
 
-		public PackingListId Id { get; private set; }
+		public LinkedList<PackingItem> Items
+			=> new LinkedList<PackingItem>();
+
 
 		public void AddItem(PackingItem item)
 		{
-			if (this.items.Contains(item))
+			if (this.Items.Contains(item))
 			{
-				throw new PackingItemExistsException(this.name, item.Name);
+				throw new PackingItemExistsException(this.Name, item.Name);
 			}
 
-			this.items.AddLast(item);
+			this.Items.AddLast(item);
 
 			this.AddEvent(new PackingItemAdded(this, item));
 		}
@@ -52,7 +45,7 @@
 			var item = this.GetItem(itemName);
 			var packedItem = item with { IsPacked = true };
 
-			this.items.Find(item).Value = packedItem;
+			this.Items.Find(item).Value = packedItem;
 
 			this.AddEvent(new PackingItemPacked(this, item));
 		}
@@ -60,14 +53,14 @@
 		public void UnpackItem(string itemName)
 		{
 			var item = this.GetItem(itemName);
-			this.items.Remove(item);
+			this.Items.Remove(item);
 
 			this.AddEvent(new PackingItemUnpacked(this, item));
 		}
 
 		private PackingItem GetItem(string itemName)
 		{
-			var item = this.items.SingleOrDefault(item => item.Name == itemName);
+			var item = this.Items.SingleOrDefault(item => item.Name == itemName);
 			if (item is null)
 			{
 				throw new PackingItemNotFoundException(itemName);

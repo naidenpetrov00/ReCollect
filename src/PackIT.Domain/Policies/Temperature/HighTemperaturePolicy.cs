@@ -1,7 +1,6 @@
 ﻿namespace PackIT.Domain.Policies.Temperature
 {
 	using System.Collections.Generic;
-	using PackIT.Domain.ValueObjects;
 
 	internal sealed class HighTemperaturePolicy : IPackingItemsPolicy
 	{

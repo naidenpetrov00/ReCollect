@@ -1,11 +1,12 @@
 ﻿namespace PackIT.Infrastructure.EF.Configurations
 {
     using PackIT.Domain.Entities;
-    using PackIT.Domain.ValueObjects;
 
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+    using PackIT.Domain.ValueObjects.PackingItems;
+    using PackIT.Domain.ValueObjects.PackingLists;
 
     internal sealed class WriteConfiguration : IEntityTypeConfiguration<PackingList>, IEntityTypeConfiguration<PackingItem>
     {

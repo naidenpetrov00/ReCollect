@@ -5,10 +5,11 @@
 	using PackIT.Domain.Entities;
 	using PackIT.Domain.Policies;
 	using PackIT.Domain.Exceptions;
-	using PackIT.Domain.ValueObjects;
 
 	using Xunit;
 	using FluentAssertions;
+	using PackIT.Domain.ValueObjects.PackingItems;
+	using PackIT.Domain.ValueObjects.PackingLists;
 
 	public class PackingListTests
 	{
