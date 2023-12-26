@@ -1,6 +1,6 @@
 ﻿namespace PackIT.Application.PackingList.Commands.AddPackingItem
 {
-	using PackIT.Application.Exceptions;
+	using PackIT.Application.Common.Exceptions;
 
 	using PackIT.Domain.Repositories;
 	using PackIT.Domain.ValueObjects.PackingItems;

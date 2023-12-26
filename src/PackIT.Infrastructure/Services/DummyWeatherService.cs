@@ -1,6 +1,6 @@
 ﻿namespace PackIT.Infrastructure.Services
 {
-    using PackIT.Application.DTO.External;
+    using PackIT.Application.Common.DTO.External;
     using PackIT.Application.Services;
     using PackIT.Domain.ValueObjects.PackingLists;
 

@@ -16,8 +16,8 @@
             Value = value;
         }
 
-        public static implicit operator PackingListId(Guid id)
-            => new(id);
+        public static implicit operator PackingListId(Guid value)
+            => new PackingListId(value);
         public static implicit operator Guid(PackingListId id)
             => id.Value;
     }

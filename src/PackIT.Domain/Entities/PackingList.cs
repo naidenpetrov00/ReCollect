@@ -8,7 +8,7 @@
 
 	using System.Collections.Generic;
 
-	public class PackingList : BaseEntity<PackingListId>
+	public class PackingList : BaseAuditableEntity<PackingListId>
 	{
 		public PackingListId Id { get; set; }
 

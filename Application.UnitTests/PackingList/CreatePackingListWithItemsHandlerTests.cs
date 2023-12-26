@@ -1,8 +1,6 @@
 ﻿namespace Application.UnitTests.PackingList
 {
     using PackIT.Application.Services;
-    using PackIT.Application.Exceptions;
-    using PackIT.Application.DTO.External;
     using PackIT.Application.PackingList.Commands.CreatePackingList;
 
     using PackIT.Domain.Enums;
@@ -17,6 +15,8 @@
     using Xunit.Abstractions;
     using FluentAssertions;
     using PackIT.Domain.ValueObjects.PackingLists;
+    using PackIT.Application.Common.Exceptions;
+    using PackIT.Application.Common.DTO.External;
 
     public class CreatePackingListWithItemsHandlerTests
 	{

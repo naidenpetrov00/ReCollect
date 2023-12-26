@@ -1,14 +1,15 @@
 ﻿namespace PackIT.Infrastructure.QueryHandlers
 {
-	using PackIT.Infrastructure.EF.Models;
-	using PackIT.Infrastructure.EF.Contexts;
-	using PackIT.Application.PackingList.Queries;
-	using PackIT.Application.DTO;
+    using PackIT.Infrastructure.EF.Models;
+    using PackIT.Infrastructure.EF.Contexts;
 
-	using Microsoft.EntityFrameworkCore;
-	using MediatR;
+    using Microsoft.EntityFrameworkCore;
+    using MediatR;
+    using PackIT.Application.Common.DTO;
+    using PackIT.Application.PackingList.Queries.GetPackingList;
+    using PackIT.Application.Common.DTO.External;
 
-	internal class GetPackingListHandler : IRequestHandler<GetPackingList, PackingListDto>
+    internal class GetPackingListHandler : IRequestHandler<GetPackingList, PackingListDto>
 	{
 		private readonly DbSet<PackingListReadModel> packingLists;
 

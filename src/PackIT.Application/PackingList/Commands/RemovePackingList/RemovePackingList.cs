@@ -1,6 +1,7 @@
 ﻿namespace PackIT.Application.PackingList.Commands.RemovePackingList
 {
-	using PackIT.Application.Exceptions;
+	using PackIT.Application.Common.Exceptions;
+	
 	using PackIT.Domain.Repositories;
 
 	using MediatR;
