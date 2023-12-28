@@ -19,7 +19,6 @@
 		public LinkedList<PackingItem> Items
 			=> new LinkedList<PackingItem>();
 
-
 		public void AddItem(PackingItem item)
 		{
 			if (this.Items.Contains(item))

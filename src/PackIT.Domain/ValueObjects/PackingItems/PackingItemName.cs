@@ -20,7 +20,7 @@
 			=> packingItemName.Value;
 
 		public static implicit operator PackingItemName(string value)
-			=> new PackingItemName(value);
+			=> new(value);
 	}
 
 }

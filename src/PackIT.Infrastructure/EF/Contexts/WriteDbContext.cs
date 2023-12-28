@@ -6,8 +6,9 @@
 	using PackIT.Domain.ValueObjects.PackingItems;
 
     using Microsoft.EntityFrameworkCore;
+	using PackIT.Application.Common.Interfaces;
 
-	internal sealed class WriteDbContext : DbContext
+	internal sealed class WriteDbContext : DbContext , IApplicationDbContext
 	{
 		public DbSet<PackingList> PackingLists { get; set; }
 

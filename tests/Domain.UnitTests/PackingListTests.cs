@@ -17,9 +17,9 @@
 		public void AddItem_Throws_PackingItemExistsException_WhenItemWithSameNameExists()
 		{
 			var packingList = this.GetPackingList();
-			packingList.AddItem(new PackingItem("Item 1", 1));
+			packingList.AddItem(new PackingItem { Name = "Item 1", Quantity = 1 });
 
-			var exception = Record.Exception(() => packingList.AddItem(new PackingItem("Item 1", 1)));
+			var exception = Record.Exception(() => packingList.AddItem(new PackingItem { Name = "Item 1", Quantity = 1 }));
 
 			exception.Should().NotBeNull();
 			exception.Should().BeOfType<PackingItemExistsException>();
@@ -30,7 +30,7 @@
 		{
 			var packingList = this.GetPackingList();
 
-			var exception = Record.Exception(() => packingList.AddItem(new PackingItem("Item 1", 1)));
+			var exception = Record.Exception(() => packingList.AddItem(new PackingItem { Name = "Item 1", Quantity = 1 }));
 
 			exception.Should().BeNull();
 			packingList.Events.Count.Should().Be(1);
