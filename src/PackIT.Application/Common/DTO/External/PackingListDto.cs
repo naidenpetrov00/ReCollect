@@ -16,11 +16,12 @@
 
 		public IEnumerable<PackingItemDto> Items { get; set; }
 
-		private class Mapping : Profile
+		public class Mapping : Profile
 		{
 			public Mapping()
 			{
-				CreateMap<PackingList, PackingListDto>();
+				CreateMap<PackingList, PackingListDto>()
+					.ForMember(pl => pl.Id, opt => opt.MapFrom(src => (Guid)src.Id));
 			}
 		}
 	}

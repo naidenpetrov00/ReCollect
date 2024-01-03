@@ -1,19 +1,20 @@
 ﻿namespace PackIT.Api.Controllers
 {
-    using PackIT.Api.Controller;
-    using PackIT.Application.PackingList.Commands.CreatePackingList;
-    using PackIT.Application.PackingList.Commands.AddPackingItem;
-    using PackIT.Application.PackingList.Commands.PackItem;
-    using PackIT.Application.PackingList.Commands.RemovePackingItem;
-    using PackIT.Application.PackingList.Commands.RemovePackingList;
+	using PackIT.Api.Controller;
 
-    using MediatR;
-    using Microsoft.AspNetCore.Mvc;
-    using PackIT.Application.PackingList.Queries.GetPackingList;
-    using PackIT.Application.PackingList.Queries.SearchPackingLists;
-    using PackIT.Application.Common.DTO.External;
+	using PackIT.Application.PackingList.Commands.CreatePackingList;
+	using PackIT.Application.PackingList.Commands.AddPackingItem;
+	using PackIT.Application.PackingList.Commands.PackItem;
+	using PackIT.Application.PackingList.Commands.RemovePackingItem;
+	using PackIT.Application.PackingList.Commands.RemovePackingList;
+	using PackIT.Application.PackingList.Queries.GetPackingList;
+	using PackIT.Application.PackingList.Queries.SearchPackingLists;
+	using PackIT.Application.Common.DTO.External;
 
-    public class PackingListsController : BaseController
+	using MediatR;
+	using Microsoft.AspNetCore.Mvc;
+
+	public class PackingListsController : BaseController
 	{
 		private readonly IMediator mediator;
 
@@ -22,7 +23,7 @@
 			this.mediator = mediator;
 		}
 
-		[HttpGet("{id:guid}")]
+		[HttpGet("{Id}")]
 		public async Task<ActionResult<PackingListDto>> Get([FromRoute] GetPackingList query)
 		{
 			var result = await this.mediator.Send(query);

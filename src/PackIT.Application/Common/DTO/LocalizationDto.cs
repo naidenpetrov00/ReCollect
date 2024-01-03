@@ -1,9 +1,21 @@
 ﻿namespace PackIT.Application.Common.DTO
 {
-    public class LocalizationDto
-    {
-        public string City { get; set; }
+	using PackIT.Domain.ValueObjects.PackingLists;
 
-        public string Country { get; set; }
-    }
+	using AutoMapper;
+
+	public class LocalizationDto
+	{
+		public string City { get; set; }
+
+		public string Country { get; set; }
+
+		private class Mapping : Profile
+		{
+			public Mapping()
+			{
+				this.CreateMap<Localization, LocalizationDto>();
+			}
+		}
+	}
 }

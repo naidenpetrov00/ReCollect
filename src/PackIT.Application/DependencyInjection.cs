@@ -14,6 +14,8 @@
 
 			services.AddSingleton<IPackingListFactory, PackingListFactory>();
 
+			services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 			services.Scan(selector => selector.FromAssemblies(typeof(IPackingItemsPolicy).Assembly)
 				.AddClasses(c => c.AssignableTo(typeof(IPackingItemsPolicy)))
 				.AsImplementedInterfaces()

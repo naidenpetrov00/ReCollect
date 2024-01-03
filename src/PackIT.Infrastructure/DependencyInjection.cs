@@ -27,8 +27,7 @@
 			services.AddScoped<IPackingListReadService, PostgresPackingListReadService>();
 
 			services.AddHostedService<AppInitializer>();
-
-			services.AddAutoMapper(Assembly.GetExecutingAssembly());
+			
 
 			var postgresOptions = configuration.GetOptions<PostgresOptions>("Postgres");
 			services.AddDbContext<ReadDbContext>(ctx => ctx.UseNpgsql(postgresOptions.ConnectionString));

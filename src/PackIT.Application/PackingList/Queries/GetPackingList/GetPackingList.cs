@@ -1,14 +1,16 @@
 ﻿namespace PackIT.Application.PackingList.Queries.GetPackingList
 {
+	using PackIT.Domain.Entities;
+
+	using PackIT.Application.Common.Interfaces;
+	using PackIT.Application.Common.DTO.External;
+
 	using MediatR;
 	using System.Threading;
 	using System.Threading.Tasks;
-	using PackIT.Application.Common.Interfaces;
 	using Microsoft.EntityFrameworkCore;
-	using PackIT.Domain.Entities;
-	using PackIT.Application.Common.DTO.External;
-	using AutoMapper.QueryableExtensions;
 	using AutoMapper;
+	using AutoMapper.QueryableExtensions;
 
 	public class GetPackingList : IRequest<PackingListDto>
 	{
@@ -30,7 +32,7 @@
 
 		public async Task<PackingListDto> Handle(GetPackingList request, CancellationToken cancellationToken)
 			=> this.packingLists
-					.Where(pl => pl.Id.Value == request.Id)
+					.Where(pl => (Guid)pl.Id == request.Id)
 					.ProjectTo<PackingListDto>(mapper.ConfigurationProvider)
 					.AsNoTracking()
 					.SingleOrDefault();
