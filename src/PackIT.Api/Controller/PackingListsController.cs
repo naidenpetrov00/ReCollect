@@ -2,6 +2,7 @@
 {
 	using PackIT.Api.Controller;
 
+	using PackIT.Application.Common.DTO;
 	using PackIT.Application.PackingList.Commands.CreatePackingList;
 	using PackIT.Application.PackingList.Commands.AddPackingItem;
 	using PackIT.Application.PackingList.Commands.PackItem;
@@ -9,7 +10,6 @@
 	using PackIT.Application.PackingList.Commands.RemovePackingList;
 	using PackIT.Application.PackingList.Queries.GetPackingList;
 	using PackIT.Application.PackingList.Queries.SearchPackingLists;
-	using PackIT.Application.Common.DTO.External;
 
 	using MediatR;
 	using Microsoft.AspNetCore.Mvc;

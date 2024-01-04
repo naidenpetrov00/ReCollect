@@ -1,7 +1,5 @@
-﻿namespace PackIT.Application.Common.DTO.External
+﻿namespace PackIT.Application.Common.DTO
 {
-	using PackIT.Application.Common.DTO;
-
 	using PackIT.Domain.Entities;
 
 	using AutoMapper;

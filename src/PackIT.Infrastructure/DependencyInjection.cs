@@ -1,21 +1,20 @@
 ﻿namespace PackIT.Infrastructure
 {
+	using PackIT.Domain.Repositories;
+
+	using PackIT.Application.Services;
+	using PackIT.Application.Common.Interfaces;
+
 	using PackIT.Infrastructure.EF.Options;
 	using PackIT.Infrastructure.EF.Contexts;
 	using PackIT.Infrastructure.EF.Repositories;
 	using PackIT.Infrastructure.Services;
 	using PackIT.Infrastructure.Logging;
 
-	using PackIT.Application.Services;
-
-	using PackIT.Domain.Repositories;
-
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 	using MediatR;
-	using PackIT.Application.Common.Interfaces;
-	using System.Reflection;
 
 	public static class DependencyInjection
 	{
@@ -27,7 +26,7 @@
 			services.AddScoped<IPackingListReadService, PostgresPackingListReadService>();
 
 			services.AddHostedService<AppInitializer>();
-			
+
 
 			var postgresOptions = configuration.GetOptions<PostgresOptions>("Postgres");
 			services.AddDbContext<ReadDbContext>(ctx => ctx.UseNpgsql(postgresOptions.ConnectionString));

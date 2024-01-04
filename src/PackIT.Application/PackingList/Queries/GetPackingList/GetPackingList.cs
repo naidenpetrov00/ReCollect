@@ -2,15 +2,15 @@
 {
 	using PackIT.Domain.Entities;
 
+	using PackIT.Application.Common.DTO;
 	using PackIT.Application.Common.Interfaces;
-	using PackIT.Application.Common.DTO.External;
 
-	using MediatR;
 	using System.Threading;
 	using System.Threading.Tasks;
 	using Microsoft.EntityFrameworkCore;
 	using AutoMapper;
 	using AutoMapper.QueryableExtensions;
+	using MediatR;
 
 	public class GetPackingList : IRequest<PackingListDto>
 	{
