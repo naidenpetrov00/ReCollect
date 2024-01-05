@@ -36,23 +36,5 @@
 					.ProjectTo<PackingListDto>(mapper.ConfigurationProvider)
 					.AsNoTracking()
 					.SingleOrDefault();
-		//.Select(pl => new PackingListDto
-		//{
-		//	Id = pl.Id,
-		//	Name = pl.Name,
-		//	LocalizationDto = new LocalizationDto
-		//	{
-		//		City = pl.Localization.City,
-		//		Country = pl.Localization.Country,
-		//	},
-		//	Items = pl.Items.Select(pi => new PackingItemDto
-		//	{
-		//		Name = pi.Name,
-		//		Quantity = pi.Quantity,
-		//		IsPacked = pi.IsPacked,
-		//	})
-		//})
-		//.AsNoTracking()
-		//.SingleOrDefaultAsync();
 	}
 }

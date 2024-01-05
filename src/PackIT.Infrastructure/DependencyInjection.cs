@@ -15,6 +15,7 @@
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 	using MediatR;
+	using System.Reflection;
 
 	public static class DependencyInjection
 	{
@@ -27,6 +28,8 @@
 
 			services.AddHostedService<AppInitializer>();
 
+			services.AddMediatR(cfg => 
+				cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 			var postgresOptions = configuration.GetOptions<PostgresOptions>("Postgres");
 			services.AddDbContext<ReadDbContext>(ctx => ctx.UseNpgsql(postgresOptions.ConnectionString));

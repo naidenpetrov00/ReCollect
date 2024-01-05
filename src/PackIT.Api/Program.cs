@@ -19,8 +19,6 @@ namespace PackIT.Api
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
-			builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Load("PackIT.Application")));
-			builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Load("PackIT.Infrastructure")));
 
 			builder.Services.AddScoped<ExceptionMiddleware>();
 
