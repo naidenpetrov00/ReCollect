@@ -1,10 +1,11 @@
 ﻿namespace PackIT.Application.PackingList.Commands.RemovePackingList
 {
 	using PackIT.Application.Common.Exceptions;
-	
+
 	using PackIT.Domain.Repositories;
 
 	using MediatR;
+	using Ardalis.GuardClauses;
 
 	public record RemovePackingList(Guid Id) : IRequest;
 
@@ -19,10 +20,7 @@
 		{
 			var packingList = await this.repository.GetAsync(request.Id);
 
-			if (packingList is null)
-			{
-				throw new PackingListNotFoundException(request.Id);
-			}
+			Guard.Against.NotFound(request.Id, packingList);
 
 			await this.repository.DeleteAsync(packingList);
 		}
