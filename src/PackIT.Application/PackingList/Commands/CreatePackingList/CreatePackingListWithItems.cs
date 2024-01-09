@@ -1,7 +1,6 @@
 ﻿namespace PackIT.Application.PackingList.Commands.CreatePackingList
 {
 	using PackIT.Application.Services;
-	using PackIT.Application.Common.Exceptions;
 
 	using PackIT.Domain.Enums;
 	using PackIT.Domain.Factory;
@@ -11,6 +10,7 @@
 	using System.Threading;
 	using System.Threading.Tasks;
 	using MediatR;
+	using Ardalis.GuardClauses;
 
 	public record CreatePackingListWithItems(
 		Guid Id,
@@ -23,20 +23,17 @@
 
 	public class CreatePackingListWithItemsHandler : IRequestHandler<CreatePackingListWithItems>
 	{
-		private readonly IPackingListRepository respository;
+		private readonly IPackingListRepository repository;
 		private readonly IPackingListFactory packingListFactory;
-		private readonly IPackingListReadService packingListReadService;
 		private readonly IWeatherService weatherService;
 
 		public CreatePackingListWithItemsHandler(
-			IPackingListRepository respository,
+			IPackingListRepository repository,
 			IPackingListFactory packingListFactory,
-			IPackingListReadService packingListReadService,
 			IWeatherService weatherService)
 		{
-			this.respository = respository;
+			this.repository = repository;
 			this.packingListFactory = packingListFactory;
-			this.packingListReadService = packingListReadService;
 			this.weatherService = weatherService;
 		}
 
@@ -44,22 +41,13 @@
 		{
 			var (id, name, days, gender, localizationWriteModel) = request;
 
-			if (await this.packingListReadService.ExistsByNameAsync(request.Name))
-			{
-				throw new PackingListAlreadyExistsException(request.Name);
-			}
-
 			var localization = new Localization(request.Localization.City, request.Localization.Country);
 			var weather = await this.weatherService.GetWeatherAsync(localization);
-
-			if (weather is null)
-			{
-				throw new MissingLocalizationWeatherException(localization);
-			}
+			Guard.Against.Null(weather);
 
 			var packingList = this.packingListFactory.CreatePackingListWithDefaultItems(id, name, localization, days, weather.Temperature, gender);
 			
-			await this.respository.AddAsync(packingList);
+			await this.repository.AddAsync(packingList);
 		}
 	}
 }

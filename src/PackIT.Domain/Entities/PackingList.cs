@@ -1,5 +1,6 @@
 ﻿namespace PackIT.Domain.Entities
 {
+	using Ardalis.GuardClauses;
 	using PackIT.Domain.Common;
 	using PackIT.Domain.Events;
 	using PackIT.Domain.Exceptions;
@@ -44,6 +45,7 @@
 			var item = this.GetItem(itemName);
 			var packedItem = item with { IsPacked = true };
 
+
 			this.Items.Find(item).Value = packedItem;
 
 			this.AddEvent(new PackingItemPacked(this, item));
@@ -60,10 +62,7 @@
 		private PackingItem GetItem(string itemName)
 		{
 			var item = this.Items.SingleOrDefault(item => item.Name == itemName);
-			if (item is null)
-			{
-				throw new PackingItemNotFoundException(itemName);
-			}
+			Guard.Against.Null(item);
 
 			return item;
 		}

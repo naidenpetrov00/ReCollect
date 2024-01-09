@@ -5,6 +5,7 @@
 	using PackIT.Domain.Repositories;
 
 	using MediatR;
+	using Ardalis.GuardClauses;
 
 	public record RemovePackingItem(Guid PackingListId, string Name) : IRequest;
 
@@ -19,10 +20,7 @@
 		{
 			var packingList = await this.repository.GetAsync(request.PackingListId);
 
-			if (packingList is null)
-			{
-				throw new PackingListNotFoundException(request.PackingListId);
-			}
+			Guard.Against.NotFound(request.PackingListId, packingList);
 
 			packingList.UnpackItem(request.Name);
 
