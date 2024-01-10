@@ -2,7 +2,7 @@
 {
 	public record PackingItem
 	{
-		public PackingItemName Name { get; set; }
+		public PackingItemName? Name { get; set; }
 		public uint Quantity { get; set; }
 		public bool IsPacked { get; set; }
 	}

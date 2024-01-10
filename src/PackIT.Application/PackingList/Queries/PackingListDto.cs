@@ -1,10 +1,12 @@
 ﻿namespace PackIT.Application.Common.DTO
 {
+	using PackIT.Application.Common.Mapping;
+
 	using PackIT.Domain.Entities;
 
 	using AutoMapper;
 
-	public class PackingListDto
+	public class PackingListDto /*: IMapFrom<PackingList>*/
 	{
 		public Guid Id { get; set; }
 
@@ -22,5 +24,10 @@
 					.ForMember(pl => pl.Id, opt => opt.MapFrom(src => (Guid)src.Id));
 			}
 		}
+		//public void Mapping(Profile profile)
+		//{
+		//	profile.CreateMap<PackingList, PackingListDto>()
+		//		.ForMember(pl => pl.Id, opt => opt.MapFrom(src => (Guid)src.Id));
+		//}
 	}
 }

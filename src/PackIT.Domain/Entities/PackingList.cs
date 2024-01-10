@@ -20,12 +20,12 @@
 		public LinkedList<PackingItem> Items
 			=> new LinkedList<PackingItem>();
 
-		public void AddItem(PackingItem item)
+        public void AddItem(PackingItem item)
 		{
-			if (this.Items.Contains(item))
-			{
-				throw new PackingItemExistsException(this.Name, item.Name);
-			}
+			Guard.Against.Null(item);
+			Guard.Against.InvalidInput(item,
+				nameof(item), i => this.Items.Contains(i),
+				 $"Packing item '{item.Name?.Value}' already exists.");
 
 			this.Items.AddLast(item);
 
