@@ -7,6 +7,7 @@
 	using MediatR;
 	using Ardalis.GuardClauses;
 	using PackIT.Application.Common.Interfaces;
+	using PackIT.Domain.Entities;
 
 	public record AddPackingItem(Guid PackingListId, string Name, uint Quantity) : IRequest;
 

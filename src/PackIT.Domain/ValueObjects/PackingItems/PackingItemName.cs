@@ -1,15 +1,13 @@
 ﻿namespace PackIT.Domain.ValueObjects.PackingItems
 {
+	using Ardalis.GuardClauses;
 	using PackIT.Domain.Exceptions;
 
 	public class PackingItemName
 	{
 		public PackingItemName(string value)
 		{
-			if (string.IsNullOrWhiteSpace(value))
-			{
-				throw new EmptyPackingListItemNameException();
-			}
+			Guard.Against.NullOrWhiteSpace(value, "Packing item name cannot be empty.");
 
 			this.Value = value;
 		}

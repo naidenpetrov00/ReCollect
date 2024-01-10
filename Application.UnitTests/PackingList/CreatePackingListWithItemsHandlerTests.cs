@@ -95,12 +95,10 @@
 		{
 			this.repository = Substitute.For<IPackingListRepository>();
 			this.weatherService = Substitute.For<IWeatherService>();
-			this.readService = Substitute.For<IPackingListReadService>();
 			this.packingListFactory = Substitute.For<IPackingListFactory>();
 			this.commandHandler = new CreatePackingListWithItemsHandler(
 				this.repository,
 				this.packingListFactory,
-				this.readService,
 				this.weatherService);
 			this.testOutput = testOutput;
 		}

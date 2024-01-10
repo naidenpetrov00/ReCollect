@@ -1,21 +1,13 @@
 ﻿namespace PackIT.Application.Common.DTO
 {
+	using PackIT.Application.Common.Mapping;
+
 	using PackIT.Domain.ValueObjects.PackingLists;
 
-	using AutoMapper;
-
-	public class LocalizationDto
+	public class LocalizationDto : IMapFrom<Localization>
 	{
 		public string City { get; set; }
 
 		public string Country { get; set; }
-
-		private class Mapping : Profile
-		{
-			public Mapping()
-			{
-				this.CreateMap<Localization, LocalizationDto>();
-			}
-		}
 	}
 }
