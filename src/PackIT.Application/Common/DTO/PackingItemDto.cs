@@ -3,12 +3,19 @@
 	using PackIT.Domain.ValueObjects.PackingItems;
 
 	using AutoMapper;
-	using PackIT.Application.Common.Mapping;
 
-	public class PackingItemDto : IMapFrom<PackingItem>
+	public class PackingItemDto
 	{
 		public string Name { get; set; }
 		public uint Quantity { get; set; }
 		public bool IsPacked { get; set; }
+
+		public class Mapping : Profile
+		{
+			public Mapping()
+			{
+				CreateMap<PackingItem, PackingItemDto>();
+			}
+		}
 	}
 }
