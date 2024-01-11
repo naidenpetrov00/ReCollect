@@ -3,11 +3,11 @@
 	using PackIT.Infrastructure.EF.Contexts;
 
 	using PackIT.Domain.Entities;
-	using PackIT.Domain.ValueObjects;
 	using PackIT.Domain.Repositories;
 
 	using System.Threading.Tasks;
 	using Microsoft.EntityFrameworkCore;
+	using PackIT.Domain.ValueObjects.PackingLists;
 
 	internal sealed class PostgresPackingListRepository : IPackingListRepository
 	{
@@ -33,7 +33,12 @@
 		}
 
 		public async Task<PackingList> GetAsync(PackingListId id)
-		=> await this.packingLists.Include("items").AsNoTracking().SingleOrDefaultAsync(pl => pl.Id == id);
+		{
+			return await this.packingLists
+			   .Where(pl => pl.Id == id)
+			   .AsNoTracking()
+			   .FirstOrDefaultAsync();
+		}
 
 		public async Task UpdateAsync(PackingList packingList)
 		{

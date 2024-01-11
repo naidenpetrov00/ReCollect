@@ -2,13 +2,14 @@
 {
 	using PackIT.Api.Controller;
 
-	using PackIT.Application.DTO;
-	using PackIT.Application.PackingList.Queries;
+	using PackIT.Application.Common.DTO;
 	using PackIT.Application.PackingList.Commands.CreatePackingList;
 	using PackIT.Application.PackingList.Commands.AddPackingItem;
 	using PackIT.Application.PackingList.Commands.PackItem;
 	using PackIT.Application.PackingList.Commands.RemovePackingItem;
 	using PackIT.Application.PackingList.Commands.RemovePackingList;
+	using PackIT.Application.PackingList.Queries.GetPackingList;
+	using PackIT.Application.PackingList.Queries.SearchPackingLists;
 
 	using MediatR;
 	using Microsoft.AspNetCore.Mvc;
@@ -22,7 +23,7 @@
 			this.mediator = mediator;
 		}
 
-		[HttpGet("{id:guid}")]
+		[HttpGet("{Id}")]
 		public async Task<ActionResult<PackingListDto>> Get([FromRoute] GetPackingList query)
 		{
 			var result = await this.mediator.Send(query);

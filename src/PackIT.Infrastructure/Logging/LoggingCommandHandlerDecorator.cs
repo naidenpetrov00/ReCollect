@@ -12,6 +12,7 @@
 			IRequestHandler<TCommand> commandHandler,
 			ILogger<LoggingCommandHandlerDecorator<TCommand>> logger)
 		{
+			this.commandHandler = commandHandler;
 			this.logger = logger;
 		}
 

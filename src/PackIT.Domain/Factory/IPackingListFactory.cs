@@ -1,10 +1,11 @@
 ﻿namespace PackIT.Domain.Factory
 {
-	using PackIT.Domain.Entities;
-	using PackIT.Domain.Enums;
-	using PackIT.Domain.ValueObjects;
+    using PackIT.Domain.Entities;
+    using PackIT.Domain.Enums;
+    using PackIT.Domain.ValueObjects;
+    using PackIT.Domain.ValueObjects.PackingLists;
 
-	public interface IPackingListFactory
+    public interface IPackingListFactory
 	{
 		PackingList CreatePackingList(PackingListId id, PackingListName name, Localization localization);
 

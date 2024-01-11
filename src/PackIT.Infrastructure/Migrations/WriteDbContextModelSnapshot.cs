@@ -28,25 +28,25 @@ namespace PackIT.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("Version")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("localization")
+                    b.Property<string>("Localization")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("Localization");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("Name");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.ToTable("PackingLists", "packing");
                 });
 
-            modelBuilder.Entity("PackIT.Domain.ValueObjects.PackingItem", b =>
+            modelBuilder.Entity("PackIT.Domain.ValueObjects.PackingItems.PackingItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,16 +72,16 @@ namespace PackIT.Infrastructure.Migrations
                     b.ToTable("PackingItems", "packing");
                 });
 
-            modelBuilder.Entity("PackIT.Domain.ValueObjects.PackingItem", b =>
+            modelBuilder.Entity("PackIT.Domain.ValueObjects.PackingItems.PackingItem", b =>
                 {
                     b.HasOne("PackIT.Domain.Entities.PackingList", null)
-                        .WithMany("items")
+                        .WithMany("Items")
                         .HasForeignKey("PackingListId");
                 });
 
             modelBuilder.Entity("PackIT.Domain.Entities.PackingList", b =>
                 {
-                    b.Navigation("items");
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,8 +1,9 @@
 ﻿namespace PackIT.Infrastructure.Services
 {
-	using PackIT.Infrastructure.EF.Contexts;
-	using PackIT.Infrastructure.EF.Models;
+	using PackIT.Application.Common.DTO;
 	using PackIT.Application.Services;
+
+	using PackIT.Infrastructure.EF.Contexts;
 
 	using System.Threading.Tasks;
 	using Microsoft.EntityFrameworkCore;

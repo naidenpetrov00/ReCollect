@@ -1,16 +1,15 @@
-﻿namespace PackIT.Domain.Policies.Gender
-{
-	using PackIT.Domain.Enums;
-	using PackIT.Domain.ValueObjects;
+﻿using PackIT.Domain.ValueObjects.PackingItems;
 
+namespace PackIT.Domain.Policies.Gender
+{
 	internal class MaleGenderPolicy : IPackingItemsPolicy
 	{
 		public IEnumerable<PackingItem> GenerateItems(PolicyData data)
 		=> new List<PackingItem>
 		{
-			new ("Laptop", 1),
-			new ("Beer", 10),
-			new ("Book", (uint)Math.Ceiling(data.Days / 7m)),
+			new PackingItem{Name="Laptop", Quantity=1 },
+			new PackingItem{Name = "Beer", Quantity = 10 },
+			new PackingItem{Name = "Book", Quantity = (uint)Math.Ceiling(data.Days / 7m)},
 		};
 
 		public bool IsApplicable(PolicyData data)

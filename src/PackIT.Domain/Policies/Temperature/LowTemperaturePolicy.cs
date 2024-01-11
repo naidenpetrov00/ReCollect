@@ -1,6 +1,6 @@
 ﻿namespace PackIT.Domain.Policies.Temperature
 {
-	using PackIT.Domain.ValueObjects;
+	using PackIT.Domain.ValueObjects.PackingItems;
 
 	using System.Collections.Generic;
 
@@ -12,11 +12,11 @@
 		public IEnumerable<PackingItem> GenerateItems(PolicyData data)
 			=> new List<PackingItem>
 			{
-				new ("Winter hat", 1),
-				new ("Scarf", 1),
-				new ("Gloves", 1),
-				new ("Hoodie", 1),
-				new ("Warm jacket", 1),
+				new PackingItem{Name="Winter hat", Quantity=1 },
+				new PackingItem{Name="Scarf", Quantity=1},
+				new PackingItem{Name="Gloves", Quantity=1},
+				new PackingItem{Name="Hoodie", Quantity=1},
+				new PackingItem{Name="Warm jacket", Quantity=1},
 			};
 	}
 }

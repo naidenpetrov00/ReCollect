@@ -1,7 +1,7 @@
 ﻿namespace PackIT.Domain.Policies.Gender
 {
+	using PackIT.Domain.ValueObjects.PackingItems;
 	using System.Collections.Generic;
-	using PackIT.Domain.ValueObjects;
 
 	internal sealed class FemaleGenderPolicy : IPackingItemsPolicy
 	{
@@ -11,9 +11,9 @@
 		public IEnumerable<PackingItem> GenerateItems(PolicyData data)
 			=> new List<PackingItem>
 			{
-				new ("Lipstick", 1),
-				new ("Powder", 1),
-				new ("Eyeliner", 1),
+				new PackingItem{ Name = "Lipstick",Quantity = 1 },
+				new PackingItem{ Name = "Powder",Quantity = 1 },
+				new PackingItem{ Name = "Eyeliner",Quantity  = 1 },
 			};
 	}
 }

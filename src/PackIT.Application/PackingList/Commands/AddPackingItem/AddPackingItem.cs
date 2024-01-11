@@ -1,34 +1,41 @@
 ﻿namespace PackIT.Application.PackingList.Commands.AddPackingItem
 {
-	using PackIT.Application.Exceptions;
-	using PackIT.Domain.ValueObjects;
 	using PackIT.Domain.Repositories;
+	using PackIT.Domain.ValueObjects.PackingItems;
 
 	using System.Threading;
 	using MediatR;
+	using Ardalis.GuardClauses;
+	using PackIT.Application.Common.Interfaces;
+	using PackIT.Domain.Entities;
 
 	public record AddPackingItem(Guid PackingListId, string Name, uint Quantity) : IRequest;
 
+
 	internal sealed class AddPackingItemHandler : IRequestHandler<AddPackingItem>
 	{
-		private readonly IPackingListRepository repository;
+		private readonly IApplicationDbContext dbContext;
 
-		public AddPackingItemHandler(IPackingListRepository repository)
-			=> this.repository = repository;
+		public AddPackingItemHandler(IApplicationDbContext dbContext)
+			=> this.dbContext = dbContext;
 
 		public async Task Handle(AddPackingItem request, CancellationToken cancellationToken)
 		{
-			var packingList = await this.repository.GetAsync(request.PackingListId);
+			var packingList = this.dbContext
+				.PackingLists
+				.Where(pl => (Guid)pl.Id == request.PackingListId)
+				.FirstOrDefault();
 
-			if (packingList is null)
+			Guard.Against.NotFound(request.PackingListId, packingList);
+
+			var packingItem = new PackingItem
 			{
-				throw new PackingListNotFoundException(request.PackingListId);
-			}
-
-			var packingItem = new PackingItem(request.Name, request.Quantity);
+				Name = request.Name,
+				Quantity = request.Quantity,
+			};
 			packingList.AddItem(packingItem);
 
-			await this.repository.UpdateAsync(packingList);
+			await this.dbContext.SaveChangesAsync(cancellationToken);
 		}
 	}
 }

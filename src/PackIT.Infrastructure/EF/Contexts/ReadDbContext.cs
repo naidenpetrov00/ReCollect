@@ -1,9 +1,9 @@
 ﻿namespace PackIT.Infrastructure.EF.Contexts
 {
-	using PackIT.Infrastructure.EF.Models;
 	using PackIT.Infrastructure.EF.Configurations;
 
 	using Microsoft.EntityFrameworkCore;
+	using PackIT.Application.Common.DTO;
 
 	internal sealed class ReadDbContext : DbContext
 	{

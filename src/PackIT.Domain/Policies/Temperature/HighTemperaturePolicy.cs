@@ -1,7 +1,8 @@
 ﻿namespace PackIT.Domain.Policies.Temperature
 {
+	using PackIT.Domain.ValueObjects.PackingItems;
+
 	using System.Collections.Generic;
-	using PackIT.Domain.ValueObjects;
 
 	internal sealed class HighTemperaturePolicy : IPackingItemsPolicy
 	{
@@ -11,9 +12,9 @@
 		public IEnumerable<PackingItem> GenerateItems(PolicyData data)
 			=> new List<PackingItem>
 			{
-				new ("Hat", 1),
-				new ("Sunglasses", 1),
-				new ("Cream with UV filter", 1),
+				new PackingItem{Name="Hat",Quantity= 1 },
+				new PackingItem{Name="Sunglasses",Quantity= 1},
+				new PackingItem{Name="Cream with UV filter",Quantity= 1},
 			};
 	}
 }

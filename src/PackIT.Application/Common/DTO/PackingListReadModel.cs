@@ -1,6 +1,6 @@
-﻿namespace PackIT.Infrastructure.EF.Models
+﻿namespace PackIT.Application.Common.DTO
 {
-	internal class PackingListReadModel
+	public class PackingListReadModel
 	{
 		public Guid Id { get; set; }
 

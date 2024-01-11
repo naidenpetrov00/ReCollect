@@ -1,6 +1,6 @@
-﻿namespace PackIT.Infrastructure.EF.Models
+﻿namespace PackIT.Application.Common.DTO
 {
-	internal class LocalizationReadModel
+	public class LocalizationReadModel
 	{
 		public string City { get; set; }
 

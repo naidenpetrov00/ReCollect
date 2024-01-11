@@ -1,9 +1,9 @@
 ﻿namespace PackIT.Domain.Repositories
 {
-	using PackIT.Domain.Entities;
-	using PackIT.Domain.ValueObjects;
+    using PackIT.Domain.Entities;
+    using PackIT.Domain.ValueObjects.PackingLists;
 
-	public interface IPackingListRepository
+    public interface IPackingListRepository
 	{
 		Task<PackingList> GetAsync(PackingListId id);
 

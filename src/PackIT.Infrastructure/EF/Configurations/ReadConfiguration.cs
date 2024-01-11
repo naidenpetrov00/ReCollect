@@ -1,6 +1,6 @@
 ﻿namespace PackIT.Infrastructure.EF.Configurations
 {
-	using PackIT.Infrastructure.EF.Models;
+	using PackIT.Application.Common.DTO;
 
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Builders;

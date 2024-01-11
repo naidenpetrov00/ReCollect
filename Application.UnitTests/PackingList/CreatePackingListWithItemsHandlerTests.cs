@@ -1,23 +1,24 @@
 ﻿namespace Application.UnitTests.PackingList
 {
-	using PackIT.Application.Services;
-	using PackIT.Application.Exceptions;
-	using PackIT.Application.DTO.External;
-	using PackIT.Application.PackingList.Commands.CreatePackingList;
+    using PackIT.Application.Services;
+    using PackIT.Application.PackingList.Commands.CreatePackingList;
 
-	using PackIT.Domain.Enums;
-	using PackIT.Domain.Factory;
-	using PackIT.Domain.Entities;
-	using PackIT.Domain.ValueObjects;
-	using PackIT.Domain.Repositories;
+    using PackIT.Domain.Enums;
+    using PackIT.Domain.Factory;
+    using PackIT.Domain.Entities;
+    using PackIT.Domain.ValueObjects;
+    using PackIT.Domain.Repositories;
 
-	using MediatR;
-	using NSubstitute;
-	using Xunit;
-	using Xunit.Abstractions;
-	using FluentAssertions;
+    using MediatR;
+    using NSubstitute;
+    using Xunit;
+    using Xunit.Abstractions;
+    using FluentAssertions;
+    using PackIT.Domain.ValueObjects.PackingLists;
+    using PackIT.Application.Common.Exceptions;
+    using PackIT.Application.Common.DTO.External;
 
-	public class CreatePackingListWithItemsHandlerTests
+    public class CreatePackingListWithItemsHandlerTests
 	{
 		private readonly IRequestHandler<CreatePackingListWithItems> commandHandler;
 		private readonly IPackingListRepository repository;
@@ -94,12 +95,10 @@
 		{
 			this.repository = Substitute.For<IPackingListRepository>();
 			this.weatherService = Substitute.For<IWeatherService>();
-			this.readService = Substitute.For<IPackingListReadService>();
 			this.packingListFactory = Substitute.For<IPackingListFactory>();
 			this.commandHandler = new CreatePackingListWithItemsHandler(
 				this.repository,
 				this.packingListFactory,
-				this.readService,
 				this.weatherService);
 			this.testOutput = testOutput;
 		}
