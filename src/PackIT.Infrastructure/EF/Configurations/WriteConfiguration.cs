@@ -1,12 +1,12 @@
 ﻿namespace PackIT.Infrastructure.EF.Configurations
 {
 	using PackIT.Domain.Entities;
+	using PackIT.Domain.ValueObjects.PackingItems;
+	using PackIT.Domain.ValueObjects.PackingLists;
 
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Builders;
 	using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-	using PackIT.Domain.ValueObjects.PackingItems;
-	using PackIT.Domain.ValueObjects.PackingLists;
 
 	internal sealed class WriteConfiguration : IEntityTypeConfiguration<PackingList>, IEntityTypeConfiguration<PackingItem>
 	{
@@ -29,8 +29,8 @@
 				.HasConversion(packingListNameConverter)
 				.HasColumnName("Name");
 
-			builder
-				.HasMany(typeof(PackingItem), "Items");
+			//builder
+			//	.HasMany(typeof(PackingItem), "Items");
 			builder.ToTable("PackingLists");
 		}
 
