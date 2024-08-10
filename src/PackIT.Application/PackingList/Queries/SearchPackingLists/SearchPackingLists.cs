@@ -1,15 +1,14 @@
 ﻿namespace PackIT.Application.PackingList.Queries.SearchPackingLists
 {
-	using PackIT.Domain.Entities;
+    using PackIT.Application.Common.DTO;
+    using PackIT.Application.Common.Interfaces;
 
-	using PackIT.Application.Common.DTO;
-	using PackIT.Application.Common.Interfaces;
+    using Microsoft.EntityFrameworkCore;
+    using MediatR;
+    using AutoMapper;
+    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
-	using Microsoft.EntityFrameworkCore;
-	using MediatR;
-	using AutoMapper;
-
-	public class SearchPackingLists : IRequest<IEnumerable<PackingListDto>>
+    public class SearchPackingLists : IRequest<IEnumerable<PackingListDto>>
 	{
 		public string SearchPhrase { get; set; }
 	}

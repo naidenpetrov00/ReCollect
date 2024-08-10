@@ -1,9 +1,9 @@
 ﻿namespace PackIT.Application.Common.DTO
 {
-	using AutoMapper;
-	using PackIT.Domain.Entities;
+    using AutoMapper;
+    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
-	public class PackingListDto
+    public class PackingListDto
 	{
 		public Guid Id { get; set; }
 

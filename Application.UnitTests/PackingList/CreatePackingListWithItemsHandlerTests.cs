@@ -5,7 +5,6 @@
 
     using PackIT.Domain.Enums;
     using PackIT.Domain.Factory;
-    using PackIT.Domain.Entities;
     using PackIT.Domain.ValueObjects;
     using PackIT.Domain.Repositories;
 
@@ -17,6 +16,7 @@
     using PackIT.Domain.ValueObjects.PackingLists;
     using PackIT.Application.Common.Exceptions;
     using PackIT.Application.Common.DTO.External;
+    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
     public class CreatePackingListWithItemsHandlerTests
 	{

@@ -1,14 +1,13 @@
 ﻿namespace PackIT.Infrastructure.EF.Contexts
 {
     using PackIT.Infrastructure.EF.Configurations;
-
-    using PackIT.Domain.Entities;
-	using PackIT.Domain.ValueObjects.PackingItems;
+    using PackIT.Domain.ValueObjects.PackingItems;
 
     using Microsoft.EntityFrameworkCore;
-	using PackIT.Application.Common.Interfaces;
+    using PackIT.Application.Common.Interfaces;
+    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
-	internal sealed class WriteDbContext : DbContext , IApplicationDbContext
+    internal sealed class WriteDbContext : DbContext , IApplicationDbContext
 	{
 		public DbSet<PackingList> PackingLists { get; set; }
 

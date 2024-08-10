@@ -1,12 +1,12 @@
 ﻿namespace PackIT.Domain.Factory
 {
-	using PackIT.Domain.Entities;
-	using PackIT.Domain.Enums;
-	using PackIT.Domain.Policies;
-	using PackIT.Domain.ValueObjects;
-	using PackIT.Domain.ValueObjects.PackingLists;
+    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
+    using PackIT.Domain.Enums;
+    using PackIT.Domain.Policies;
+    using PackIT.Domain.ValueObjects;
+    using PackIT.Domain.ValueObjects.PackingLists;
 
-	public sealed class PackingListFactory : IPackingListFactory
+    public sealed class PackingListFactory : IPackingListFactory
 	{
 		private readonly IEnumerable<IPackingItemsPolicy> policies;
 

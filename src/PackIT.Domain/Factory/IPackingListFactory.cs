@@ -1,6 +1,6 @@
 ﻿namespace PackIT.Domain.Factory
 {
-    using PackIT.Domain.Entities;
+    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
     using PackIT.Domain.Enums;
     using PackIT.Domain.ValueObjects;
     using PackIT.Domain.ValueObjects.PackingLists;

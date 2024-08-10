@@ -1,18 +1,17 @@
 ﻿namespace PackIT.Application.PackingList.Queries.GetPackingList
 {
-	using PackIT.Domain.Entities;
+    using PackIT.Application.Common.DTO;
+    using PackIT.Application.Common.Interfaces;
 
-	using PackIT.Application.Common.DTO;
-	using PackIT.Application.Common.Interfaces;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using MediatR;
+    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
-	using System.Threading;
-	using System.Threading.Tasks;
-	using Microsoft.EntityFrameworkCore;
-	using AutoMapper;
-	using AutoMapper.QueryableExtensions;
-	using MediatR;
-
-	public class GetPackingList : IRequest<PackingListDto>
+    public class GetPackingList : IRequest<PackingListDto>
 	{
 		public Guid Id { get; set; }
 	}

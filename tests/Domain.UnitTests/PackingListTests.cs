@@ -1,17 +1,17 @@
 ﻿namespace Domain.UnitTests
 {
-	using PackIT.Domain.Events;
-	using PackIT.Domain.Factory;
-	using PackIT.Domain.Entities;
-	using PackIT.Domain.Policies;
-	using PackIT.Domain.Exceptions;
+    using PackIT.Domain.Events;
+    using PackIT.Domain.Factory;
+    using PackIT.Domain.Policies;
+    using PackIT.Domain.Exceptions;
 
-	using Xunit;
-	using FluentAssertions;
-	using PackIT.Domain.ValueObjects.PackingItems;
-	using PackIT.Domain.ValueObjects.PackingLists;
+    using Xunit;
+    using FluentAssertions;
+    using PackIT.Domain.ValueObjects.PackingItems;
+    using PackIT.Domain.ValueObjects.PackingLists;
+    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
-	public class PackingListTests
+    public class PackingListTests
 	{
 		[Fact]
 		public void AddItem_Throws_PackingItemExistsException_WhenItemWithSameNameExists()

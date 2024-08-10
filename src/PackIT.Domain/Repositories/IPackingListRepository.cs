@@ -1,6 +1,6 @@
 ﻿namespace PackIT.Domain.Repositories
 {
-    using PackIT.Domain.Entities;
+    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
     using PackIT.Domain.ValueObjects.PackingLists;
 
     public interface IPackingListRepository
