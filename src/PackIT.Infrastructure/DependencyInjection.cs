@@ -1,23 +1,23 @@
 ﻿namespace PackIT.Infrastructure
 {
-	using PackIT.Domain.Repositories;
+    using PackIT.Domain.Repositories;
 
-	using PackIT.Application.Services;
-	using PackIT.Application.Common.Interfaces;
+    using PackIT.Application.Services;
+    using PackIT.Application.Common.Interfaces;
 
-	using PackIT.Infrastructure.EF.Options;
-	using PackIT.Infrastructure.EF.Contexts;
-	using PackIT.Infrastructure.EF.Repositories;
-	using PackIT.Infrastructure.Services;
-	using PackIT.Infrastructure.Logging;
+    using PackIT.Infrastructure.EF.Options;
+    using PackIT.Infrastructure.EF.Repositories;
+    using PackIT.Infrastructure.Services;
+    using PackIT.Infrastructure.Logging;
 
-	using Microsoft.EntityFrameworkCore;
-	using Microsoft.Extensions.Configuration;
-	using Microsoft.Extensions.DependencyInjection;
-	using MediatR;
-	using System.Reflection;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using MediatR;
+    using System.Reflection;
+    using PackIT.Infrastructure.Data.Contexts;
 
-	public static class DependencyInjection
+    public static class DependencyInjection
 	{
 		public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
 		{

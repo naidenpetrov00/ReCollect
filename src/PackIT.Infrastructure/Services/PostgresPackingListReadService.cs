@@ -1,14 +1,13 @@
 ﻿namespace PackIT.Infrastructure.Services
 {
-	using PackIT.Application.Common.DTO;
-	using PackIT.Application.Services;
+    using PackIT.Application.Common.DTO;
+    using PackIT.Application.Services;
 
-	using PackIT.Infrastructure.EF.Contexts;
+    using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
+    using PackIT.Infrastructure.Data.Contexts;
 
-	using System.Threading.Tasks;
-	using Microsoft.EntityFrameworkCore;
-
-	internal sealed class PostgresPackingListReadService : IPackingListReadService
+    internal sealed class PostgresPackingListReadService : IPackingListReadService
 	{
 		private readonly DbSet<PackingListReadModel> packingList;
 

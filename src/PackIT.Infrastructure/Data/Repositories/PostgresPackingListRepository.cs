@@ -1,12 +1,12 @@
 ﻿namespace PackIT.Infrastructure.EF.Repositories
 {
-    using PackIT.Infrastructure.EF.Contexts;
     using PackIT.Domain.Repositories;
 
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
     using PackIT.Domain.ValueObjects.PackingLists;
     using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
+    using PackIT.Infrastructure.Data.Contexts;
 
     internal sealed class PostgresPackingListRepository : IPackingListRepository
 	{
