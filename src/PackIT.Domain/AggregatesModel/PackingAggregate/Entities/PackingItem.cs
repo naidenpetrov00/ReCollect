@@ -8,5 +8,7 @@ namespace PackIT.Domain.ValueObjects.PackingItems
         public PackingItemName? Name { get; set; }
         public uint Quantity { get; set; }
         public bool IsPacked { get; set; }
+
+        public PackingList PackingList { get; set; } = null!;
     }
 }

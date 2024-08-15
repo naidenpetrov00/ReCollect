@@ -8,18 +8,11 @@
     using PackIT.Domain.ValueObjects.PackingItems;
     using PackIT.Domain.ValueObjects.PackingLists;
 
-    internal sealed class WriteConfiguration
-        : IEntityTypeConfiguration<PackingItemReadModel>,
-            IEntityTypeConfiguration<PackingItem>
+    internal sealed class WriteConfiguration : IEntityTypeConfiguration<PackingItem>
     {
         public void Configure(EntityTypeBuilder<PackingItem> builder)
         {
             builder.OwnsOne(b => b.Name);
-        }
-
-        public void Configure(EntityTypeBuilder<PackingItemReadModel> builder)
-        {
-            builder.ToTable("PackingItems");
         }
     }
 }

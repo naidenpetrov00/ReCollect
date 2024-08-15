@@ -1,20 +1,24 @@
-﻿namespace PackIT.Infrastructure.Data.Contexts;
+﻿namespace PackIT.Infrastructure.Data;
 
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PackIT.Application.Common.Interfaces;
 using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
+using PackIT.Domain.ValueObjects.PackingItems;
 using PackIT.Infrastructure.Identity;
 
-internal sealed class WriteDbContext
+internal sealed class ApplicationDbContext
     : IdentityDbContext<ApplicationUser>,
-        IApplicationWriteDbContext
+        IApplicationDbContext
 {
-    public DbSet<PackingList> PackingLists { get; set; }
-
-    public WriteDbContext(DbContextOptions<WriteDbContext> options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options) { }
+
+    public DbSet<PackingList> PackingLists { get; set; }
+    public DbSet<PackingItem> PackingItems { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

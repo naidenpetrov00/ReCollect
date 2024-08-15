@@ -9,11 +9,11 @@ using PackIT.Domain.ValueObjects.PackingLists;
 
 public class PackingList : BaseAuditableEntity<int>, IAgregateRoot
 {
-    private readonly List<PackingItem> packingItems;
+    private readonly IList<PackingItem> packingItems = new List<PackingItem>();
 
-    public PackingListName Name { get; private set; }
+    public PackingListName? Name { get; private set; }
 
-    public Localization Localization { get; private set; }
+    public Localization? Localization { get; private set; }
 
     public IReadOnlyCollection<PackingItem> PackingItems => this.packingItems.AsReadOnly();
 
@@ -58,7 +58,7 @@ public class PackingList : BaseAuditableEntity<int>, IAgregateRoot
 
     private PackingItem GetItem(string itemName)
     {
-        var item = this.packingItems.SingleOrDefault(i => i.Name == itemName);
+        var item = this.packingItems.SingleOrDefault(i => i.Name! == itemName);
         Guard.Against.Null(item);
 
         return item;
