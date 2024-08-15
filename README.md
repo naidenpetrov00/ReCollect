@@ -1,4 +1,8 @@
-# PackIT
-Trying to exercise and probably learn the clean architecture and CQRS concepts and best practices.
+# CleanArchitectureTemplate
 
-![TakeOne](https://github.com/naidenpetrov00/PackIT/assets/58266467/29f4b76e-ba3b-4547-8d46-8d21ba9acccd)
+Basic Template for Clean Architeture to use in personal projects.
+
+The template is using EF, AutoMapper, MediatR, Guard Clauses.
+It implenets Aggregates and Repository(Following microsoft principles), CQRS.
+
+Still have Work to do ....
