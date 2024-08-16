@@ -3,7 +3,7 @@ namespace PackIT.Domain.AggregatesModel.PackingAggregate;
 using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 using PackIT.Domain.SeedWork;
 
-interface IPackingListReository : IRepository<PackingList>
+public interface IPackingListReository : IRepository<PackingList>
 {
     Task<PackingList> GetAsync(int id);
 
@@ -11,5 +11,5 @@ interface IPackingListReository : IRepository<PackingList>
 
     void Update(PackingList packingList);
 
-    bool Delete(PackingList packingList);
+    void Delete(PackingList packingList);
 }

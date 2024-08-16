@@ -7,7 +7,7 @@ using PackIT.Domain.SeedWork;
 using PackIT.Domain.ValueObjects.PackingItems;
 using PackIT.Domain.ValueObjects.PackingLists;
 
-public class PackingList : BaseAuditableEntity<int>, IAgregateRoot
+public class PackingList : BaseAuditableEntity, IAgregateRoot
 {
     private readonly IList<PackingItem> packingItems = new List<PackingItem>();
 

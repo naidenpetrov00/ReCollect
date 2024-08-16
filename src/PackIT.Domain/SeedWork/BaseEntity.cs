@@ -2,10 +2,10 @@
 {
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public abstract class BaseEntity<T>
+    public abstract class BaseEntity
     {
 #pragma warning disable CS8618
-        public T Id { get; private set; }
+        public int Id { get; private set; }
 #pragma warning restore CS8618
 
         private List<BaseEvent> events = new();

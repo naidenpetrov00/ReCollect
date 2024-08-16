@@ -1,6 +1,6 @@
 ﻿namespace PackIT.Domain.SeedWork
 {
-    public abstract class BaseAuditableEntity<T> : BaseEntity<T>
+    public abstract class BaseAuditableEntity : BaseEntity
     {
         public DateTimeOffset Created { get; private set; }
 

@@ -1,5 +1,5 @@
 namespace PackIT.Domain.SeedWork
 {
-    interface IRepository<T>
+    public interface IRepository<T>
         where T : IAgregateRoot { }
 }
