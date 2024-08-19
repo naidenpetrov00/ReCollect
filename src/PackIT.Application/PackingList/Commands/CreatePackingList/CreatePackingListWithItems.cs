@@ -4,7 +4,6 @@
 
 	using PackIT.Domain.Enums;
 	using PackIT.Domain.Factory;
-	using PackIT.Domain.Repositories;
 	using PackIT.Domain.ValueObjects.PackingLists;
 
 	using System.Threading;
