@@ -1,10 +1,7 @@
-﻿namespace PackIT.Domain.Exceptions
+﻿namespace PackIT.Domain.Exceptions;
+
+public class EmptyPackingListItemNameException : Exception
 {
-	public class EmptyPackingListItemNameException : Exception
-	{
-		public EmptyPackingListItemNameException()
-			: base("Packing item name cannot be empty.")
-        {
-        }
-	}
+    public EmptyPackingListItemNameException()
+        : base("Packing item name cannot be empty.") { }
 }

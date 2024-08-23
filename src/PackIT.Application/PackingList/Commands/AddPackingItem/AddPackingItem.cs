@@ -1,41 +1,33 @@
-﻿namespace PackIT.Application.PackingList.Commands.AddPackingItem
+﻿namespace PackIT.Application.PackingList.Commands.AddPackingItem;
+
+using System.Threading;
+using Ardalis.GuardClauses;
+using MediatR;
+using PackIT.Application.Common.Interfaces;
+using PackIT.Domain.ValueObjects.PackingItems;
+
+public record AddPackingItem(int Id, string Name, uint Quantity) : IRequest;
+
+internal sealed class AddPackingItemHandler : IRequestHandler<AddPackingItem>
 {
-	using PackIT.Domain.Repositories;
-	using PackIT.Domain.ValueObjects.PackingItems;
+    private readonly IApplicationDbContext dbContext;
 
-	using System.Threading;
-	using MediatR;
-	using Ardalis.GuardClauses;
-	using PackIT.Application.Common.Interfaces;
-	using PackIT.Domain.Entities;
+    public AddPackingItemHandler(IApplicationDbContext dbContext)
+    {
+        this.dbContext = dbContext;
+    }
 
-	public record AddPackingItem(Guid PackingListId, string Name, uint Quantity) : IRequest;
+    public async Task Handle(AddPackingItem request, CancellationToken cancellationToken)
+    {
+        var packingList = this
+            .dbContext.PackingLists.Where(pl => pl.Id == request.PackingListId)
+            .FirstOrDefault();
 
+        Guard.Against.NotFound(request.PackingListId, packingList);
 
-	internal sealed class AddPackingItemHandler : IRequestHandler<AddPackingItem>
-	{
-		private readonly IApplicationDbContext dbContext;
+        var packingItem = new PackingItem { Name = request.Name, Quantity = request.Quantity };
+        packingList.AddItem(packingItem);
 
-		public AddPackingItemHandler(IApplicationDbContext dbContext)
-			=> this.dbContext = dbContext;
-
-		public async Task Handle(AddPackingItem request, CancellationToken cancellationToken)
-		{
-			var packingList = this.dbContext
-				.PackingLists
-				.Where(pl => (Guid)pl.Id == request.PackingListId)
-				.FirstOrDefault();
-
-			Guard.Against.NotFound(request.PackingListId, packingList);
-
-			var packingItem = new PackingItem
-			{
-				Name = request.Name,
-				Quantity = request.Quantity,
-			};
-			packingList.AddItem(packingItem);
-
-			await this.dbContext.SaveChangesAsync(cancellationToken);
-		}
-	}
+        await this.dbContext.SaveChangesAsync(cancellationToken);
+    }
 }

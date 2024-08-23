@@ -1,20 +1,17 @@
-﻿namespace PackIT.Domain.Policies.Temperature
+﻿namespace PackIT.Domain.Policies.Temperature;
+
+using System.Collections.Generic;
+using PackIT.Domain.ValueObjects.PackingItems;
+
+internal sealed class HighTemperaturePolicy : IPackingItemsPolicy
 {
-	using PackIT.Domain.ValueObjects.PackingItems;
+    public bool IsApplicable(PolicyData data) => data.Temperature > 25D;
 
-	using System.Collections.Generic;
-
-	internal sealed class HighTemperaturePolicy : IPackingItemsPolicy
-	{
-		public bool IsApplicable(PolicyData data)
-			=> data.Temperature > 25D;
-
-		public IEnumerable<PackingItem> GenerateItems(PolicyData data)
-			=> new List<PackingItem>
-			{
-				new PackingItem{Name="Hat",Quantity= 1 },
-				new PackingItem{Name="Sunglasses",Quantity= 1},
-				new PackingItem{Name="Cream with UV filter",Quantity= 1},
-			};
-	}
+    public IEnumerable<PackingItem> GenerateItems(PolicyData data) =>
+        new List<PackingItem>
+        {
+            new PackingItem { Name = "Hat", Quantity = 1 },
+            new PackingItem { Name = "Sunglasses", Quantity = 1 },
+            new PackingItem { Name = "Cream with UV filter", Quantity = 1 },
+        };
 }

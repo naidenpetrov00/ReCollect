@@ -1,28 +1,25 @@
-﻿namespace PackIT.Application.PackingList.Commands.CreatePackingList
+﻿namespace PackIT.Application.PackingList.Commands.CreatePackingList;
+
+using FluentValidation;
+using PackIT.Application.Services;
+
+public class CreatePackingListWithItemsValidator : AbstractValidator<CreatePackingListWithItems>
 {
-	using PackIT.Application.Services;
+    private readonly IPackingListReadService packingListReadService;
 
-	using FluentValidation;
+    public CreatePackingListWithItemsValidator(IPackingListReadService packingListReadService)
+    {
+        this.packingListReadService = packingListReadService;
 
-	public class CreatePackingListWithItemsValidator : AbstractValidator<CreatePackingListWithItems>
-	{
-		private readonly IPackingListReadService packingListReadService;
+        RuleFor(pl => pl.Name)
+            .NotEmpty()
+            .MustAsync(NotExistsByName)
+            .WithMessage("Packing list '{PropertyValue}' already exists")
+            .WithErrorCode("InvalidOperation");
+    }
 
-		public CreatePackingListWithItemsValidator(IPackingListReadService packingListReadService)
-		{
-			this.packingListReadService = packingListReadService;
-
-			RuleFor(pl => pl.Name)
-				.NotEmpty()
-				.MustAsync(NotExistsByName)
-				.WithMessage("Packing list '{PropertyValue}' already exists")
-				.WithErrorCode("InvalidOperation");
-		}
-
-		public async Task<bool> NotExistsByName(string name, CancellationToken cancellationToken)
-		{
-			return !await packingListReadService.ExistsByNameAsync(name);
-		}
-
-	}
+    public async Task<bool> NotExistsByName(string name, CancellationToken cancellationToken)
+    {
+        return !await packingListReadService.ExistsByNameAsync(name);
+    }
 }

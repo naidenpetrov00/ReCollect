@@ -1,8 +1,7 @@
-﻿namespace PackIT.Domain.Enums
+﻿namespace PackIT.Domain.Enums;
+
+public enum Gender
 {
-	public enum Gender
-	{
-		Male = 0,
-		Female = 1,
-	}
+    Male = 0,
+    Female = 1,
 }

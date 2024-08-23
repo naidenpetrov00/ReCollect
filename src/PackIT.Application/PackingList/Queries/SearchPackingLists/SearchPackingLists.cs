@@ -1,46 +1,47 @@
-﻿namespace PackIT.Application.PackingList.Queries.SearchPackingLists
+﻿namespace PackIT.Application.PackingList.Queries.SearchPackingLists;
+
+using AutoMapper;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using PackIT.Application.Common.DTO;
+using PackIT.Application.Common.Interfaces;
+using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
+
+public class SearchPackingLists : IRequest<IEnumerable<PackingListDto>>
 {
-    using PackIT.Application.Common.DTO;
-    using PackIT.Application.Common.Interfaces;
+    public string SearchPhrase { get; set; }
+}
 
-    using Microsoft.EntityFrameworkCore;
-    using MediatR;
-    using AutoMapper;
-    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
+public class SearchPackingListsHandler
+    : IRequestHandler<SearchPackingLists, IEnumerable<PackingListDto>>
+{
+    private readonly DbSet<PackingList> packingLists;
+    private readonly IMapper mapper;
 
-    public class SearchPackingLists : IRequest<IEnumerable<PackingListDto>>
-	{
-		public string SearchPhrase { get; set; }
-	}
+    public SearchPackingListsHandler(IApplicationDbContext context, IMapper mapper)
+    {
+        this.packingLists = context.PackingLists;
+        this.mapper = mapper;
+    }
 
-	public class SearchPackingListsHandler : IRequestHandler<SearchPackingLists, IEnumerable<PackingListDto>>
-	{
-		private readonly DbSet<PackingList> packingLists;
-		private readonly IMapper mapper;
+    public async Task<IEnumerable<PackingListDto>> Handle(
+        SearchPackingLists request,
+        CancellationToken cancellationToken
+    )
+    {
+        var searchQuery = this.packingLists.AsQueryable();
 
-		public SearchPackingListsHandler(
-			IApplicationDbContext context,
-			IMapper mapper)
-		{
-			this.packingLists = context.PackingLists;
-			this.mapper = mapper;
-		}
+        if (request.SearchPhrase is not null)
+        {
+            // Warning (Ef may not be able to convert)
+            searchQuery = searchQuery.Where(pl =>
+                EF.Functions.Like(pl.Name, $"%{request.SearchPhrase}%")
+            );
+        }
 
-		public async Task<IEnumerable<PackingListDto>> Handle(SearchPackingLists request, CancellationToken cancellationToken)
-		{
-			var searchQuery = this.packingLists.AsQueryable();
-
-			if (request.SearchPhrase is not null)
-			{
-				// Warning (Ef may not be able to convert)
-				searchQuery = searchQuery
-					.Where(pl => EF.Functions.Like(pl.Name, $"%{request.SearchPhrase}%"));
-			}
-
-			return await searchQuery
-				.Select(pl => this.mapper.Map<PackingListDto>(pl))
-				.AsNoTracking()
-				.ToListAsync();
-		}
-	}
+        return await searchQuery
+            .Select(pl => this.mapper.Map<PackingListDto>(pl))
+            .AsNoTracking()
+            .ToListAsync();
+    }
 }

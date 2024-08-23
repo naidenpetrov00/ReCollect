@@ -1,30 +1,27 @@
-﻿namespace PackIT.Application.PackingList.Commands.RemovePackingItem
+﻿namespace PackIT.Application.PackingList.Commands.RemovePackingItem;
+
+using Ardalis.GuardClauses;
+using MediatR;
+using PackIT.Application.Common.Exceptions;
+using PackIT.Domain.Repositories;
+
+public record RemovePackingItem(Guid PackingListId, string Name) : IRequest;
+
+internal sealed class RemovePackingItemHandler : IRequestHandler<RemovePackingItem>
 {
-	using PackIT.Application.Common.Exceptions;
+    private readonly IPackingListRepository repository;
 
-	using PackIT.Domain.Repositories;
+    public RemovePackingItemHandler(IPackingListRepository repository) =>
+        this.repository = repository;
 
-	using MediatR;
-	using Ardalis.GuardClauses;
+    public async Task Handle(RemovePackingItem request, CancellationToken cancellationToken)
+    {
+        var packingList = await this.repository.GetAsync(request.PackingListId);
 
-	public record RemovePackingItem(Guid PackingListId, string Name) : IRequest;
+        Guard.Against.NotFound(request.PackingListId, packingList);
 
-	internal sealed class RemovePackingItemHandler : IRequestHandler<RemovePackingItem>
-	{
-		private readonly IPackingListRepository repository;
+        packingList.UnpackItem(request.Name);
 
-		public RemovePackingItemHandler(IPackingListRepository repository)
-			=> this.repository = repository;
-
-		public async Task Handle(RemovePackingItem request, CancellationToken cancellationToken)
-		{
-			var packingList = await this.repository.GetAsync(request.PackingListId);
-
-			Guard.Against.NotFound(request.PackingListId, packingList);
-
-			packingList.UnpackItem(request.Name);
-
-			await this.repository.UpdateAsync(packingList);
-		}
-	}
+        await this.repository.UpdateAsync(packingList);
+    }
 }

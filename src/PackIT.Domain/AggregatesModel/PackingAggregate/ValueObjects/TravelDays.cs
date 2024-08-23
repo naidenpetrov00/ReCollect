@@ -1,26 +1,22 @@
-﻿namespace PackIT.Domain.ValueObjects
+﻿namespace PackIT.Domain.ValueObjects;
+
+using PackIT.Domain.Exceptions;
+
+public record TravelDays
 {
-	using PackIT.Domain.Exceptions;
+    public TravelDays(ushort value)
+    {
+        if (value is < 0 or > 100)
+        {
+            throw new InvalidTravelDaysException(value);
+        }
 
-	public record TravelDays
-	{
+        this.Value = value;
+    }
 
-		public TravelDays(ushort value)
-		{
-			if (value is < 0 or > 100)
-			{
-				throw new InvalidTravelDaysException(value);
-			}
+    public ushort Value { get; }
 
-			this.Value = value;
-		}
+    public static implicit operator ushort(TravelDays temperature) => temperature.Value;
 
-		public ushort Value { get; }
-
-		public static implicit operator ushort(TravelDays temperature)
-			=> temperature.Value;
-
-		public static implicit operator TravelDays(ushort temperature)
-			=> new (temperature);
-	}
+    public static implicit operator TravelDays(ushort temperature) => new(temperature);
 }

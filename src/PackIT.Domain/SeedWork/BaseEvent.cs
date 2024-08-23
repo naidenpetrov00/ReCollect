@@ -1,6 +1,5 @@
-﻿namespace PackIT.Domain.SeedWork
-{
-    using MediatR;
+﻿namespace PackIT.Domain.SeedWork;
 
-    public record BaseEvent : INotification { }
-}
+using MediatR;
+
+public record BaseEvent : INotification { }

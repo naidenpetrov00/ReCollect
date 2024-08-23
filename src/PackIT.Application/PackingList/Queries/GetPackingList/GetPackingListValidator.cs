@@ -1,30 +1,27 @@
-﻿namespace PackIT.Application.PackingList.Queries.GetPackingList
+﻿namespace PackIT.Application.PackingList.Queries.GetPackingList;
+
+using System;
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using PackIT.Application.Common.Interfaces;
+
+public class GetPackingListValidator : AbstractValidator<GetPackingList>
 {
-	using PackIT.Application.Common.Interfaces;
+    private readonly IApplicationDbContext context;
 
-	using FluentValidation;
-	using Microsoft.EntityFrameworkCore;
-	using System;
+    public GetPackingListValidator(IApplicationDbContext context)
+    {
+        this.context = context;
 
-	public class GetPackingListValidator : AbstractValidator<GetPackingList>
-	{
-		private readonly IApplicationDbContext context;
+        RuleFor(pl => pl.Id)
+            .NotEmpty()
+            .MustAsync(PackingListMustExist)
+            .WithMessage("Packing list with id: '{PropertyValue}' must exist")
+            .WithErrorCode("Not Existing");
+    }
 
-		public GetPackingListValidator(IApplicationDbContext context)
-		{
-			this.context = context;
-
-			RuleFor(pl => pl.Id)
-				.NotEmpty()
-				.MustAsync(PackingListMustExist)
-				.WithMessage("Packing list with id: '{PropertyValue}' must exist")
-				.WithErrorCode("Not Existing");
-		}
-
-		private async Task<bool> PackingListMustExist(Guid packingListId, CancellationToken cancellationToken)
-		{
-			return await this.context.PackingLists
-				.AnyAsync(pl => (Guid)pl.Id == packingListId);
-		}
-	}
+    private async Task<bool> PackingListMustExist(
+        int packingListId,
+        CancellationToken cancellationToken
+    ) => await this.context.PackingLists.AnyAsync(pl => pl.Id == packingListId);
 }

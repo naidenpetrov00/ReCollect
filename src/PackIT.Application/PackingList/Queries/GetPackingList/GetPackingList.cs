@@ -1,39 +1,39 @@
-﻿namespace PackIT.Application.PackingList.Queries.GetPackingList
+﻿namespace PackIT.Application.PackingList.Queries.GetPackingList;
+
+using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using PackIT.Application.Common.DTO;
+using PackIT.Application.Common.Interfaces;
+using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
+
+public record GetPackingList(int Id) : IRequest<PackingListDto>;
+
+public class GetPackingListHandler : IRequestHandler<GetPackingList, PackingListDto>
 {
-    using PackIT.Application.Common.DTO;
-    using PackIT.Application.Common.Interfaces;
+    private readonly DbSet<PackingList> packingLists;
+    private readonly IMapper mapper;
 
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.EntityFrameworkCore;
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
-    using MediatR;
-    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
+    public GetPackingListHandler(IApplicationDbContext dbContext, IMapper mapper)
+    {
+        packingLists = dbContext.PackingLists;
+        this.mapper = mapper;
+    }
 
-    public class GetPackingList : IRequest<PackingListDto>
-	{
-		public Guid Id { get; set; }
-	}
+    public async Task<PackingListDto> Handle(
+        GetPackingList request,
+        CancellationToken cancellationToken
+    )
+    {
+        var packingList = await this
+            .packingLists.Where(pl => pl.Id == request.Id)
+            .AsNoTracking()
+            .ProjectTo<PackingListDto>(mapper.ConfigurationProvider)
+            .SingleOrDefaultAsync(cancellationToken);
 
-	public class GetPackingListHandler : IRequestHandler<GetPackingList, PackingListDto>
-	{
-		private readonly DbSet<PackingList> packingLists;
-		private readonly IMapper mapper;
-
-		public GetPackingListHandler(
-			IApplicationDbContext dbContext,
-			IMapper mapper)
-		{
-			packingLists = dbContext.PackingLists;
-			this.mapper = mapper;
-		}
-
-		public async Task<PackingListDto> Handle(GetPackingList request, CancellationToken cancellationToken)
-			=> this.packingLists
-					.Where(pl => (Guid)pl.Id == request.Id)
-					.ProjectTo<PackingListDto>(mapper.ConfigurationProvider)
-					.AsNoTracking()
-					.SingleOrDefault();
-	}
+        return packingList!;
+    }
 }

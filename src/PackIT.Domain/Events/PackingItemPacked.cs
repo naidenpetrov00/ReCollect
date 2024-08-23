@@ -1,8 +1,7 @@
-﻿namespace PackIT.Domain.Events
-{
-    using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
-    using PackIT.Domain.SeedWork;
-    using PackIT.Domain.ValueObjects.PackingItems;
+﻿namespace PackIT.Domain.Events;
 
-    public record PackingItemPacked(PackingList packingList, PackingItem packingItem) : BaseEvent;
-}
+using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
+using PackIT.Domain.SeedWork;
+using PackIT.Domain.ValueObjects.PackingItems;
+
+public record PackingItemPacked(PackingList packingList, PackingItem packingItem) : BaseEvent;

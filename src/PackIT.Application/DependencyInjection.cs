@@ -1,42 +1,42 @@
-﻿namespace PackIT.Application
+﻿namespace PackIT.Application;
+
+using System.Reflection;
+using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using PackIT.Application.Common.Behaviours;
+using PackIT.Application.SeedWork.Behaviours;
+using PackIT.Domain.Factory;
+using PackIT.Domain.Policies;
+
+public static class DependencyInjection
 {
-    using PackIT.Domain.Factory;
-    using PackIT.Domain.Policies;
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    {
+        var assembly = Assembly.GetCallingAssembly();
 
-    using PackIT.Application.Common.Behaviours;
+        services.AddSingleton<IPackingListFactory, PackingListFactory>();
+        services.AddLogging();
 
-    using System.Reflection;
-    using Microsoft.Extensions.DependencyInjection;
-    using MediatR;
-    using FluentValidation;
-    using PackIT.Application.SeedWork.Behaviours;
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-    public static class DependencyInjection
-	{
-		public static IServiceCollection AddApplicationServices(this IServiceCollection services)
-		{
-			var assembly = Assembly.GetCallingAssembly();
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
-			services.AddSingleton<IPackingListFactory, PackingListFactory>();
-			services.AddLogging();
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+        });
 
-			services.AddAutoMapper(Assembly.GetExecutingAssembly());
+        services.Scan(selector =>
+            selector
+                .FromAssemblies(typeof(IPackingItemsPolicy).Assembly)
+                .AddClasses(c => c.AssignableTo(typeof(IPackingItemsPolicy)))
+                .AsImplementedInterfaces()
+                .WithSingletonLifetime()
+        );
 
-			services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
-			services.AddMediatR(cfg =>
-			{
-				cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-				cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
-				cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-			});
-
-			services.Scan(selector => selector.FromAssemblies(typeof(IPackingItemsPolicy).Assembly)
-				.AddClasses(c => c.AssignableTo(typeof(IPackingItemsPolicy)))
-				.AsImplementedInterfaces()
-				.WithSingletonLifetime());
-
-			return services;
-		}
-	}
+        return services;
+    }
 }

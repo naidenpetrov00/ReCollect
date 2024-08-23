@@ -1,4 +1,3 @@
-﻿namespace PackIT.Application.Common.DTO.External
-{
-    public record WeatherDto(double Temperature);
-}
+﻿namespace PackIT.Application.Common.DTO.External;
+
+public record WeatherDto(double Temperature);

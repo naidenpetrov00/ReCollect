@@ -1,26 +1,22 @@
-﻿namespace PackIT.Domain.ValueObjects
+﻿namespace PackIT.Domain.ValueObjects;
+
+using PackIT.Domain.Exceptions;
+
+public record Temperature
 {
-	using PackIT.Domain.Exceptions;
+    public Temperature(double value)
+    {
+        if (value is < -100 or > 100)
+        {
+            throw new InvalidTemperatureException(value);
+        }
 
-	public record Temperature
-	{
+        this.Value = value;
+    }
 
-		public Temperature(double value)
-		{
-			if (value is < -100 or > 100)
-			{
-				throw new InvalidTemperatureException(value);
-			}
+    public double Value { get; }
 
-			this.Value = value;
-		}
+    public static implicit operator double(Temperature temperature) => temperature.Value;
 
-		public double Value { get; }
-
-		public static implicit operator double(Temperature temperature)
-			=> temperature.Value;
-
-		public static implicit operator Temperature(double temperature)
-			=> new (temperature);
-	}
+    public static implicit operator Temperature(double temperature) => new(temperature);
 }

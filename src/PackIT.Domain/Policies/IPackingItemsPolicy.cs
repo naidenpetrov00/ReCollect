@@ -1,11 +1,10 @@
-﻿namespace PackIT.Domain.Policies
+﻿namespace PackIT.Domain.Policies;
+
+using PackIT.Domain.ValueObjects.PackingItems;
+
+public interface IPackingItemsPolicy
 {
-	using PackIT.Domain.ValueObjects.PackingItems;
+    bool IsApplicable(PolicyData data);
 
-	public interface IPackingItemsPolicy
-	{
-		bool IsApplicable(PolicyData data);
-
-		IEnumerable<PackingItem> GenerateItems(PolicyData data);
-	}
+    IEnumerable<PackingItem> GenerateItems(PolicyData data);
 }

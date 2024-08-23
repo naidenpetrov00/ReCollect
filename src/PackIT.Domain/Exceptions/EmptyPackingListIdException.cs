@@ -1,10 +1,7 @@
-﻿namespace PackIT.Domain.Exceptions
+﻿namespace PackIT.Domain.Exceptions;
+
+internal class EmptyPackingListIdException : Exception
 {
-	internal class EmptyPackingListIdException : Exception
-	{
-		public EmptyPackingListIdException()
-			: base("Packing list ID cannot be empty")
-        {
-        }
-	}
+    public EmptyPackingListIdException()
+        : base("Packing list ID cannot be empty") { }
 }

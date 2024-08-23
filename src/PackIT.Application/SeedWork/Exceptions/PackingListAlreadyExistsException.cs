@@ -1,10 +1,7 @@
-﻿namespace PackIT.Application.Common.Exceptions
+﻿namespace PackIT.Application.Common.Exceptions;
+
+public class PackingListAlreadyExistsException : Exception
 {
-    public class PackingListAlreadyExistsException : Exception
-    {
-        public PackingListAlreadyExistsException(string? name)
-            : base($"Packing list: '{name}' already exists.")
-        {
-        }
-    }
+    public PackingListAlreadyExistsException(string? name)
+        : base($"Packing list: '{name}' already exists.") { }
 }

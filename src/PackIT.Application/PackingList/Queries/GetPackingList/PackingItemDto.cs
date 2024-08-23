@@ -1,21 +1,19 @@
-﻿namespace PackIT.Application.Common.DTO
+﻿namespace PackIT.Application.Common.DTO;
+
+using AutoMapper;
+using PackIT.Domain.ValueObjects.PackingItems;
+
+public class PackingItemDto
 {
-	using PackIT.Domain.ValueObjects.PackingItems;
+    public string Name { get; init; }
+    public uint Quantity { get; init; }
+    public bool IsPacked { get; init; }
 
-	using AutoMapper;
-
-	public class PackingItemDto
-	{
-		public string Name { get; init; }
-		public uint Quantity { get; init; }
-		public bool IsPacked { get; init; }
-
-		public class Mapping : Profile
-		{
-			public Mapping()
-			{
-				CreateMap<PackingItem, PackingItemDto>();
-			}
-		}
-	}
+    public class Mapping : Profile
+    {
+        public Mapping()
+        {
+            CreateMap<PackingItem, PackingItemDto>();
+        }
+    }
 }
