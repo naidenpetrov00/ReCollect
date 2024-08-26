@@ -1,8 +1,5 @@
 ﻿namespace PackIT.Domain.ValueObjects.PackingLists;
 
-using Ardalis.GuardClauses;
-using PackIT.Domain.Exceptions;
-
 public record PackingListName
 {
     public PackingListName(string value)

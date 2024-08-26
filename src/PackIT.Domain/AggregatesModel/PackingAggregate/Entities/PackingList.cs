@@ -1,9 +1,6 @@
 ﻿namespace PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
 using System.Collections.Generic;
-using Ardalis.GuardClauses;
-using PackIT.Domain.Events;
-using PackIT.Domain.SeedWork;
 using PackIT.Domain.ValueObjects.PackingItems;
 using PackIT.Domain.ValueObjects.PackingLists;
 

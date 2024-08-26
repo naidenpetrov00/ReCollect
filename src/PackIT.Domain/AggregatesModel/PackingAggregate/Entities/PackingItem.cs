@@ -1,7 +1,6 @@
-﻿using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
-using PackIT.Domain.SeedWork;
+﻿namespace PackIT.Domain.ValueObjects.PackingItems;
 
-namespace PackIT.Domain.ValueObjects.PackingItems;
+using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
 public class PackingItem : BaseAuditableEntity
 {

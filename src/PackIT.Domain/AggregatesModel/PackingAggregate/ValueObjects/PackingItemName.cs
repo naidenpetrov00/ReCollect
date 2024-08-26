@@ -1,6 +1,5 @@
 ﻿namespace PackIT.Domain.ValueObjects.PackingItems;
 
-using Ardalis.GuardClauses;
 using PackIT.Domain.Exceptions;
 
 public class PackingItemName

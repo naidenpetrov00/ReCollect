@@ -4,7 +4,7 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using PackIT.Application.Common.Interfaces;
 
-public class AddPackingItemCommandValidator : AbstractValidator<AddPackingItemCommand>
+public class AddPackingItemCommandValidator : AbstractValidator<AddPackingItem>
 {
     private readonly IApplicationDbContext dbContext;
 
@@ -12,7 +12,7 @@ public class AddPackingItemCommandValidator : AbstractValidator<AddPackingItemCo
     {
         this.dbContext = dbContext;
 
-        RuleFor(pl => pl.PackingListId)
+        RuleFor(pl => pl.Id)
             .NotEmpty()
             .MustAsync(PackingListShouldExist)
             .WithMessage("{PropertyName} must exist");

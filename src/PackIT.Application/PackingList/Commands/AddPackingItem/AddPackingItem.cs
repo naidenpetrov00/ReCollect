@@ -20,10 +20,10 @@ internal sealed class AddPackingItemHandler : IRequestHandler<AddPackingItem>
     public async Task Handle(AddPackingItem request, CancellationToken cancellationToken)
     {
         var packingList = this
-            .dbContext.PackingLists.Where(pl => pl.Id == request.PackingListId)
+            .dbContext.PackingLists.Where(pl => pl.Id == request.Id)
             .FirstOrDefault();
 
-        Guard.Against.NotFound(request.PackingListId, packingList);
+        Guard.Against.NotFound(request.Id, packingList);
 
         var packingItem = new PackingItem { Name = request.Name, Quantity = request.Quantity };
         packingList.AddItem(packingItem);
