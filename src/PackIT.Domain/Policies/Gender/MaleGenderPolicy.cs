@@ -1,4 +1,4 @@
-﻿using PackIT.Domain.ValueObjects.PackingItems;
+﻿using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
 namespace PackIT.Domain.Policies.Gender;
 

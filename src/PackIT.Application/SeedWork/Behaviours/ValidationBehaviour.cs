@@ -21,7 +21,7 @@ public class ValidationBehaviour<TRequest, TRespose> : IPipelineBehavior<TReques
         CancellationToken cancellationToken
     )
     {
-        if (validators.Any())
+        if (this.validators.Any())
         {
             var context = new ValidationContext<TRequest>(request);
 

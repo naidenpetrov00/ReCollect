@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PackIT.Application.Common.DTO;
 using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
-using PackIT.Domain.ValueObjects.PackingItems;
 using PackIT.Domain.ValueObjects.PackingLists;
 
 internal sealed class WriteConfiguration : IEntityTypeConfiguration<PackingItem>

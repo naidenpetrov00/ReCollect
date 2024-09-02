@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PackIT.Application.Common.Interfaces;
 using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
-using PackIT.Domain.ValueObjects.PackingItems;
 using PackIT.Infrastructure.Identity;
 using PackIT.Infrastructure.SeedWork;
 

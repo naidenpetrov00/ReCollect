@@ -1,7 +1,7 @@
 ﻿namespace PackIT.Domain.Policies.Gender;
 
 using System.Collections.Generic;
-using PackIT.Domain.ValueObjects.PackingItems;
+using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
 internal sealed class FemaleGenderPolicy : IPackingItemsPolicy
 {

@@ -1,7 +1,7 @@
 ﻿namespace PackIT.Application.Common.DTO;
 
 using AutoMapper;
-using PackIT.Domain.ValueObjects.PackingItems;
+using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
 public class PackingItemDto
 {

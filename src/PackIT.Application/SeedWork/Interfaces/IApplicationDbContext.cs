@@ -2,7 +2,6 @@
 
 using Microsoft.EntityFrameworkCore;
 using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
-using PackIT.Domain.ValueObjects.PackingItems;
 
 public interface IApplicationDbContext
 {

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using MediatR;
 using PackIT.Application.Services;
+using PackIT.Domain.AggregatesModel.PackingAggregate;
 using PackIT.Domain.Enums;
 using PackIT.Domain.Factory;
 using PackIT.Domain.ValueObjects.PackingLists;
@@ -21,7 +22,7 @@ public record LocalizationWriteModel(string City, string Country);
 
 public class CreatePackingListWithItemsHandler : IRequestHandler<CreatePackingListWithItems>
 {
-    private readonly IPackingListRepository repository;
+    private readonly IPackingListReository repository;
     private readonly IPackingListFactory packingListFactory;
     private readonly IWeatherService weatherService;
 
@@ -58,7 +59,6 @@ public class CreatePackingListWithItemsHandler : IRequestHandler<CreatePackingLi
             weather.Temperature,
             gender
         );
-
         await this.repository.AddAsync(packingList);
     }
 }

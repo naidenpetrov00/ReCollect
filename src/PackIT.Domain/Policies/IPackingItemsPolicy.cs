@@ -1,6 +1,6 @@
 ﻿namespace PackIT.Domain.Policies;
 
-using PackIT.Domain.ValueObjects.PackingItems;
+using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
 public interface IPackingItemsPolicy
 {

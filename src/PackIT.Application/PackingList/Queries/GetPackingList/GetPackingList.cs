@@ -8,8 +8,10 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using PackIT.Application.Common.DTO;
 using PackIT.Application.Common.Interfaces;
+using PackIT.Application.SeedWork.Security;
 using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
+[Authorize]
 public record GetPackingList(int Id) : IRequest<PackingListDto>;
 
 public class GetPackingListHandler : IRequestHandler<GetPackingList, PackingListDto>
@@ -31,7 +33,7 @@ public class GetPackingListHandler : IRequestHandler<GetPackingList, PackingList
         var packingList = await this
             .packingLists.Where(pl => pl.Id == request.Id)
             .AsNoTracking()
-            .ProjectTo<PackingListDto>(mapper.ConfigurationProvider)
+            .ProjectTo<PackingListDto>(this.mapper.ConfigurationProvider)
             .SingleOrDefaultAsync(cancellationToken);
 
         return packingList!;

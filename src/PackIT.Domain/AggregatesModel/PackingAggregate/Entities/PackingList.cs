@@ -1,7 +1,6 @@
 ﻿namespace PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
 using System.Collections.Generic;
-using PackIT.Domain.ValueObjects.PackingItems;
 using PackIT.Domain.ValueObjects.PackingLists;
 
 public class PackingList : BaseAuditableEntity, IAgregateRoot

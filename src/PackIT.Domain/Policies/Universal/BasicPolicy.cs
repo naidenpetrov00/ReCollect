@@ -2,7 +2,7 @@
 
 using System;
 using System.Collections.Generic;
-using PackIT.Domain.ValueObjects.PackingItems;
+using PackIT.Domain.AggregatesModel.PackingAggregate.Entities;
 
 internal sealed class BasicPolicy : IPackingItemsPolicy
 {
