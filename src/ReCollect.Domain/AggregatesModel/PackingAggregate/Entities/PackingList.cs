@@ -1,7 +1,7 @@
 ﻿namespace ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;
 
 using System.Collections.Generic;
-using ReCollect.Domain.ValueObjects.PackingLists;
+using ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
 public class PackingList : BaseAuditableEntity, IAgregateRoot
 {

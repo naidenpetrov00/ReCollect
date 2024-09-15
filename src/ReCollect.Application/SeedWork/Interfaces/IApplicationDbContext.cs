@@ -1,4 +1,4 @@
-﻿namespace ReCollect.Application.Common.Interfaces;
+﻿namespace ReCollect.Application.SeedWork.Interfaces;
 
 using Microsoft.EntityFrameworkCore;
 using ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;

@@ -1,9 +1,7 @@
-﻿namespace ReCollect.Api.Controllers;
+﻿namespace ReCollect.Api.Controller;
 
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ReCollect.Api.Controller;
-using ReCollect.Application.Common.DTO;
 using ReCollect.Application.PackingList.Commands.AddPackingItem;
 using ReCollect.Application.PackingList.Commands.CreatePackingList;
 using ReCollect.Application.PackingList.Commands.PackItem;

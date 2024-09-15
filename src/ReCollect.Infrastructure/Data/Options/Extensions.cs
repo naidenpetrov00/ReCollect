@@ -1,4 +1,4 @@
-﻿namespace ReCollect.Infrastructure.EF.Options;
+﻿namespace ReCollect.Infrastructure.Data.Options;
 
 using Microsoft.Extensions.Configuration;
 

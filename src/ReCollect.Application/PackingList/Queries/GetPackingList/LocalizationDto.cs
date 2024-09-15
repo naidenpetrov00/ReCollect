@@ -1,7 +1,7 @@
-﻿namespace ReCollect.Application.SeedWork.Models;
+﻿namespace ReCollect.Application.PackingList.Queries.GetPackingList;
 
 using AutoMapper;
-using ReCollect.Domain.ValueObjects.PackingLists;
+using ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
 public class LocalizationDto
 {

@@ -1,5 +1,7 @@
 ﻿namespace ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;
 
+using ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
+
 public class PackingItem : BaseAuditableEntity
 {
     public PackingItemName? Name { get; set; }

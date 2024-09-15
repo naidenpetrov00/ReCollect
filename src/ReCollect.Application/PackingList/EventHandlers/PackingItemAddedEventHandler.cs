@@ -1,4 +1,4 @@
-namespace ReCollect.Application.PackingList;
+namespace ReCollect.Application.PackingList.EventHandlers;
 
 using System.Threading;
 using System.Threading.Tasks;

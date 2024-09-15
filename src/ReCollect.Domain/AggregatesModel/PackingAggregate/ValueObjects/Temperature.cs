@@ -1,4 +1,4 @@
-﻿namespace ReCollect.Domain.ValueObjects;
+﻿namespace ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
 using ReCollect.Domain.Exceptions;
 
@@ -7,9 +7,7 @@ public record Temperature
     public Temperature(double value)
     {
         if (value is < -100 or > 100)
-        {
             throw new InvalidTemperatureException(value);
-        }
 
         this.Value = value;
     }

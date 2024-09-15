@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ReCollect.Infrastructure\ReCollect.Infrastructure.csproj" />
     <ProjectReference Include="..\recollect.react.client\recollect.react.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

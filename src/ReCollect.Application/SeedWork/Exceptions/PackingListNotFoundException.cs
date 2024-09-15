@@ -1,4 +1,4 @@
-﻿namespace ReCollect.Application.Common.Exceptions;
+﻿namespace ReCollect.Application.SeedWork.Exceptions;
 
 public class PackingListNotFoundException : Exception
 {

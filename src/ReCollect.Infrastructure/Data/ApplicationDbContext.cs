@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ReCollect.Application.Common.Interfaces;
+using ReCollect.Application.SeedWork.Interfaces;
 using ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;
 using ReCollect.Infrastructure.Identity;
 using ReCollect.Infrastructure.SeedWork;

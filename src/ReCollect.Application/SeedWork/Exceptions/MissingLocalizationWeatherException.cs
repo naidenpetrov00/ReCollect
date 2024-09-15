@@ -1,6 +1,6 @@
-﻿namespace ReCollect.Application.Common.Exceptions;
+﻿namespace ReCollect.Application.SeedWork.Exceptions;
 
-using ReCollect.Domain.ValueObjects.PackingLists;
+using ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
 public class MissingLocalizationWeatherException : Exception
 {

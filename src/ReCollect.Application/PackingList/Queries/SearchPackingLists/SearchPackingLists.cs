@@ -3,8 +3,8 @@
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using ReCollect.Application.Common.DTO;
-using ReCollect.Application.Common.Interfaces;
+using ReCollect.Application.PackingList.Queries.GetPackingList;
+using ReCollect.Application.SeedWork.Interfaces;
 using ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;
 
 public class SearchPackingLists : IRequest<IEnumerable<PackingListDto>>

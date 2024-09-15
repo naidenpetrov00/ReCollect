@@ -1,4 +1,4 @@
-﻿namespace ReCollect.Domain.ValueObjects.PackingLists;
+﻿namespace ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
 public record PackingListName
 {

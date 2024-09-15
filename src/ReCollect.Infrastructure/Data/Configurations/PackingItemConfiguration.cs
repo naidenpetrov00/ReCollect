@@ -1,4 +1,4 @@
-﻿namespace ReCollect.Infrastructure.EF.Configurations;
+﻿namespace ReCollect.Infrastructure.Data.Configurations;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

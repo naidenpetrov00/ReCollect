@@ -5,12 +5,12 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ReCollect.Application.Common.Interfaces;
+using ReCollect.Application.SeedWork.Interfaces;
 using ReCollect.Application.Services;
 using ReCollect.Domain.AggregatesModel.PackingAggregate;
 using ReCollect.Infrastructure.Data;
+using ReCollect.Infrastructure.Data.Options;
 using ReCollect.Infrastructure.Data.Repositories;
-using ReCollect.Infrastructure.EF.Options;
 using ReCollect.Infrastructure.Logging;
 using ReCollect.Infrastructure.Services;
 

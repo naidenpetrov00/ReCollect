@@ -3,7 +3,7 @@
 using System.Threading;
 using Ardalis.GuardClauses;
 using MediatR;
-using ReCollect.Application.Common.Interfaces;
+using ReCollect.Application.SeedWork.Interfaces;
 using ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;
 
 public record AddPackingItem(int Id, string Name, uint Quantity) : IRequest;

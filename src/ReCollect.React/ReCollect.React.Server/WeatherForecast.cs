@@ -1,4 +1,4 @@
-namespace ReCollect.React.Server;
+namespace ReCollect.Server;
 
 public class WeatherForecast
 {

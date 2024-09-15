@@ -5,19 +5,19 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9FCD97D3-AEB1-45D6-A05C-D50448C512B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCollect.Api", "src\ReCollect.Api\ReCollect.Api.csproj", "{85E8F4EA-8A6C-49CF-824A-5EC2A3DEBCF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCollect.Api", "src\ReCollect.Api\ReCollect.Api.csproj", "{85E8F4EA-8A6C-49CF-824A-5EC2A3DEBCF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCollect.Application", "src\ReCollect.Application\ReCollect.Application.csproj", "{850C7830-A116-4BFA-9780-998A586C69D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCollect.Application", "src\ReCollect.Application\ReCollect.Application.csproj", "{850C7830-A116-4BFA-9780-998A586C69D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCollect.Domain", "src\ReCollect.Domain\ReCollect.Domain.csproj", "{899AF329-424C-464B-BF7A-07026869C821}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCollect.Domain", "src\ReCollect.Domain\ReCollect.Domain.csproj", "{899AF329-424C-464B-BF7A-07026869C821}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCollect.Infrastructure", "src\ReCollect.Infrastructure\ReCollect.Infrastructure.csproj", "{95AC448C-1658-43A0-9E35-6A825BA51129}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCollect.Infrastructure", "src\ReCollect.Infrastructure\ReCollect.Infrastructure.csproj", "{95AC448C-1658-43A0-9E35-6A825BA51129}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReCollect.React", "ReCollect.React", "{E4C1006E-BA46-415F-B3DC-127BBD4ED5E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCollect.React.Server", "src\ReCollect.React\ReCollect.React.Server\ReCollect.React.Server.csproj", "{F87510E7-491E-47DE-B1CD-ADC6A746BD9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCollect.Server", "src\ReCollect.React\ReCollect.React.Server\ReCollect.Server.csproj", "{F87510E7-491E-47DE-B1CD-ADC6A746BD9F}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ReCollect.react.client", "src\ReCollect.React\recollect.react.client\recollect.react.client.esproj", "{04F3D227-99EF-41AA-9BFC-272319255F18}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "recollect.react.client", "src\ReCollect.React\recollect.react.client\recollect.react.client.esproj", "{04F3D227-99EF-41AA-9BFC-272319255F18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

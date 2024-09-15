@@ -1,4 +1,4 @@
-﻿namespace ReCollect.Application.Common.DTO;
+﻿namespace ReCollect.Application.PackingList.Queries.GetPackingList;
 
 using AutoMapper;
 using ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;

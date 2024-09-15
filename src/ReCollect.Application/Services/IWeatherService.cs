@@ -1,7 +1,7 @@
 ﻿namespace ReCollect.Application.Services;
 
-using ReCollect.Application.Common.DTO.External;
-using ReCollect.Domain.ValueObjects.PackingLists;
+using ReCollect.Application.SeedWork.Models.External;
+using ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
 public interface IWeatherService
 {

@@ -3,7 +3,7 @@
 using System;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
-using ReCollect.Application.Common.Interfaces;
+using ReCollect.Application.SeedWork.Interfaces;
 
 public class GetPackingListValidator : AbstractValidator<GetPackingList>
 {

@@ -1,4 +1,4 @@
-﻿namespace ReCollect.Domain.ValueObjects.PackingItems;
+﻿namespace ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
 using ReCollect.Domain.Exceptions;
 

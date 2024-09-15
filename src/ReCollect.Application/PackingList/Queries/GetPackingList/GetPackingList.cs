@@ -6,8 +6,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using ReCollect.Application.Common.DTO;
-using ReCollect.Application.Common.Interfaces;
+using ReCollect.Application.SeedWork.Interfaces;
 using ReCollect.Application.SeedWork.Security;
 using ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;
 

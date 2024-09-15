@@ -1,4 +1,4 @@
-﻿namespace ReCollect.Application.Common.Behaviours;
+﻿namespace ReCollect.Application.SeedWork.Behaviours;
 
 using MediatR;
 using Microsoft.Extensions.Logging;

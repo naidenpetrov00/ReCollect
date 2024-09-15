@@ -1,0 +1,6 @@
+@ReCollect.Server_HostAddress = http://localhost:5131
+
+GET {{ReCollect.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

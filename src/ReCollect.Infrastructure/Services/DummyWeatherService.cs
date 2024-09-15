@@ -1,8 +1,8 @@
 ﻿namespace ReCollect.Infrastructure.Services;
 
-using ReCollect.Application.Common.DTO.External;
+using ReCollect.Application.SeedWork.Models.External;
 using ReCollect.Application.Services;
-using ReCollect.Domain.ValueObjects.PackingLists;
+using ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
 internal sealed class DummyWeatherService : IWeatherService
 {
