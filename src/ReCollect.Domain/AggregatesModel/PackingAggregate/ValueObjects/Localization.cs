@@ -5,6 +5,8 @@ using ReCollect.Domain.SeedWork;
 
 public class Localization : ValueObject
 {
+    public Localization() { }
+
     public Localization(string City, string Country)
     {
         this.City = City;
@@ -20,7 +22,8 @@ public class Localization : ValueObject
         return new Localization(splitLocalization.First(), splitLocalization.Last());
     }
 
-    public override string ToString() => $"{City},{Country}";
+    public static implicit operator string(Localization localization) =>
+        $"{localization.City}, {localization.Country}";
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

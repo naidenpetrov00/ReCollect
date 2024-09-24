@@ -3,7 +3,6 @@
 using System.Threading;
 using Ardalis.GuardClauses;
 using MediatR;
-using ReCollect.Application.Common.Exceptions;
 using ReCollect.Domain.AggregatesModel.PackingAggregate;
 
 public record PackItem(int PackingListId, string Name) : IRequest;

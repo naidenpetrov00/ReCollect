@@ -1,10 +1,11 @@
 namespace ReCollect.Server;
 
 using ReCollect.Infrastructure;
+using ReCollect.Infrastructure.SeedWork;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ public class Program
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
+            await app.InitializeDatabaseAsync();
             app.UseSwagger();
             app.UseSwaggerUI();
         }

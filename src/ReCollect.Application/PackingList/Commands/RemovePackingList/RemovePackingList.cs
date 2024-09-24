@@ -2,7 +2,6 @@
 
 using Ardalis.GuardClauses;
 using MediatR;
-using ReCollect.Application.Common.Exceptions;
 using ReCollect.Domain.AggregatesModel.PackingAggregate;
 
 public record RemovePackingList(int Id) : IRequest;

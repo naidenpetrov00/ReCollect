@@ -6,8 +6,8 @@ using Ardalis.GuardClauses;
 using MediatR;
 using ReCollect.Application.Services;
 using ReCollect.Domain.AggregatesModel.PackingAggregate;
+using ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 using ReCollect.Domain.Enums;
-using ReCollect.Domain.ValueObjects.PackingLists;
 
 public record CreatePackingListWithItems(
     Guid Id,
