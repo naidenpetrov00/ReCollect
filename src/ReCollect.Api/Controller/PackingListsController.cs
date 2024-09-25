@@ -3,7 +3,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ReCollect.Application.PackingList.Commands.AddPackingItem;
-using ReCollect.Application.PackingList.Commands.CreatePackingList;
 using ReCollect.Application.PackingList.Commands.PackItem;
 using ReCollect.Application.PackingList.Commands.RemovePackingItem;
 using ReCollect.Application.PackingList.Commands.RemovePackingList;
@@ -35,13 +34,6 @@ public class PackingListsController : BaseController
         var result = await this.mediator.Send(query);
 
         return this.OkOrNotFound(result);
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Post(CreatePackingListWithItems command)
-    {
-        await this.mediator.Send(command);
-        return CreatedAtAction(nameof(Get), new { id = command.Id }, null);
     }
 
     [HttpPut("{packingListId:guid}/items")]

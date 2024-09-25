@@ -13,7 +13,7 @@ internal sealed class ExceptionMiddleware : IMiddleware
         catch (Exception ex)
         {
             context.Response.StatusCode = 400;
-            context.Response.Headers.Add("content-type", "application/json");
+            context.Response.Headers.Append("content-type", "application/json");
 
             var errorCode = ToUnderscoreCase(ex.GetType().Name.Replace("Exception", string.Empty));
             var json = JsonSerializer.Serialize(
@@ -27,7 +27,7 @@ internal sealed class ExceptionMiddleware : IMiddleware
         string.Concat(
                 (value ?? string.Empty).Select(
                     (x, i) =>
-                        i > 0 && char.IsUpper(x) && !char.IsUpper(value[i - 1])
+                        i > 0 && char.IsUpper(x) && !char.IsUpper(value![i - 1])
                             ? $"_{x}"
                             : x.ToString()
                 )

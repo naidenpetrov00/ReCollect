@@ -1,5 +1,6 @@
 namespace ReCollect.Server;
 
+using ReCollect.Application;
 using ReCollect.Infrastructure;
 using ReCollect.Infrastructure.SeedWork;
 
@@ -12,6 +13,7 @@ public class Program
         // Add services to the container.
         builder.Services.AddAuthorization();
 
+        builder.Services.AddApplicationServices();
         builder.Services.AddInfrastructureServices(builder.Configuration);
 
         builder.Services.AddEndpointsApiExplorer();

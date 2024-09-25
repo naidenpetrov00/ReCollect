@@ -2,5 +2,5 @@
 
 public class MssqlOptions
 {
-    public string ConnectionString { get; set; }
+    public string? ConnectionString { get; set; }
 }

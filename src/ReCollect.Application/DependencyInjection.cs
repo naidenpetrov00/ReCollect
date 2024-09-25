@@ -15,7 +15,7 @@ public static class DependencyInjection
 
         services.AddLogging();
 
-        //services.AddAutoMapper(Assembly.GetExecutingAssembly());
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
