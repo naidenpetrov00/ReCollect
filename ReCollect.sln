@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCollect.Server", "src\ReC
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "recollect.react.client", "src\ReCollect.React\recollect.react.client\recollect.react.client.esproj", "{04F3D227-99EF-41AA-9BFC-272319255F18}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{CD94FB01-3CC3-4A55-AA13-7C01B3C48FDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{04F3D227-99EF-41AA-9BFC-272319255F18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04F3D227-99EF-41AA-9BFC-272319255F18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04F3D227-99EF-41AA-9BFC-272319255F18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD94FB01-3CC3-4A55-AA13-7C01B3C48FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD94FB01-3CC3-4A55-AA13-7C01B3C48FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD94FB01-3CC3-4A55-AA13-7C01B3C48FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD94FB01-3CC3-4A55-AA13-7C01B3C48FDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

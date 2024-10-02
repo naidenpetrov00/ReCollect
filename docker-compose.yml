@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  recollect.server:
+    container_name: recollect.server
+    image: ${DOCKER_REGISTRY-}recollectserver
+    build:
+      context: .
+      dockerfile: src/ReCollect.React/ReCollect.React.Server/Dockerfile
+    ports:
+      - "8080"
+      - "8081"
+  
+  recollect.database:
+    container_name: recollect.database
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+        - "ACCEPT_EULA=Y"
+        - "MSSQL_SA_PASSWORD=SuperStrongPassword1!"
+        - "MSSQL_PID=Developer"
+    volumes:
+        - ./.containers/products-db:/var/opt/mssql
+    ports:
+        - "1433:1433"
