@@ -7,7 +7,7 @@ EXPOSE 8080
 EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
+ARG BUILD_CONFIGURATION=Development
 WORKDIR /src
 COPY ["src/ReCollect.React/recollect.react.client/nuget.config", "src/ReCollect.React/recollect.react.client/"]
 COPY ["src/ReCollect.React/ReCollect.React.Server/ReCollect.Server.csproj", "src/ReCollect.React/ReCollect.React.Server/"]
@@ -21,7 +21,7 @@ WORKDIR "/src/src/ReCollect.React/ReCollect.React.Server"
 RUN dotnet build "./ReCollect.Server.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
+ARG BUILD_CONFIGURATION=Development
 RUN dotnet publish "./ReCollect.Server.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final

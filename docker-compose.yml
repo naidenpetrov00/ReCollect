@@ -3,22 +3,35 @@ version: '3.4'
 services:
   recollect.server:
     container_name: recollect.server
-    image: ${DOCKER_REGISTRY-}recollectserver
+    image: recollect.server
     build:
-      context: .
-      dockerfile: src/ReCollect.React/ReCollect.React.Server/Dockerfile
+        context: .
+        dockerfile: src/ReCollect.React/ReCollect.React.Server/Dockerfile
     ports:
-      - "8080"
-      - "8081"
-  
+        - "8080"
+        - "8081"
+    depends_on:
+        - recollect.database 
+
+  recollect.react.client:
+    image: recollect.react.client
+    container_name: recollect.react.client
+    build:
+        context: ./recollect.react.client
+        dockerfile: Dockerfile
+    ports:
+        - "5172:5172"
+        - "5173:5173"
+
   recollect.database:
     container_name: recollect.database
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
         - "ACCEPT_EULA=Y"
         - "MSSQL_SA_PASSWORD=SuperStrongPassword1!"
-        - "MSSQL_PID=Developer"
     volumes:
-        - ./.containers/products-db:/var/opt/mssql
+        - ./sqlserver/data:/var/opt/mssql/data
+        - ./sqlserver/log:/var/opt/mssql/log
     ports:
         - "1433:1433"
+
