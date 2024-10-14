@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -6,7 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <SpaRoot>..\recollect.react.client</SpaRoot>
     <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
-    <SpaProxyServerUrl>https://localhost:5173</SpaProxyServerUrl>
+    <!--<SpaProxyServerUrl>https://localhost:5173</SpaProxyServerUrl>-->
+    <SpaProxyServerUrl>http://localhost:5000</SpaProxyServerUrl>
     <UserSecretsId>edc4c8de-2c19-450d-a175-7b7eb80bcf93</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>

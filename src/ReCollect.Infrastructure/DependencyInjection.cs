@@ -24,8 +24,8 @@ public static class DependencyInjection
 
         var mssqlConnectionString = configuration
             .GetOptions<MssqlOptions>("MSSQL")
-            .ConnectionString;
-        //.ConnectionStringDocker;
+            //.ConnectionString;
+            .ConnectionStringDocker;
         Guard.Against.Null(mssqlConnectionString, message: "Connection String not found!");
 
         services.AddDbContext<ApplicationDbContext>(options =>

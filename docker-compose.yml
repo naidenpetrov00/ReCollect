@@ -1,28 +1,9 @@
 version: '3.4'
 
+x-project:
+    name: recollect_container
+
 services:
-  recollect.server:
-    container_name: recollect.server
-    image: recollect.server
-    build:
-        context: .
-        dockerfile: src/ReCollect.React/ReCollect.React.Server/Dockerfile
-    ports:
-        - "8080"
-        - "8081"
-    depends_on:
-        - recollect.database 
-
-  recollect.react.client:
-    image: recollect.react.client
-    container_name: recollect.react.client
-    build:
-        context: ./recollect.react.client
-        dockerfile: Dockerfile
-    ports:
-        - "5172:5172"
-        - "5173:5173"
-
   recollect.database:
     container_name: recollect.database
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -34,4 +15,32 @@ services:
         - ./sqlserver/log:/var/opt/mssql/log
     ports:
         - "1433:1433"
+
+  recollect.server:
+    container_name: recollect.server
+    extends:
+        file: docker-compose.vs.debug.g.yml
+        service: recollect.server
+    image: recollect.server
+    build:
+        context: .
+        dockerfile: src/ReCollect.React/ReCollect.React.Server/Dockerfile
+    ports:
+        - "8080"
+        - "8081"
+    volumes:
+        - ~/.aspnet/https:/https:ro
+    depends_on:
+        - recollect.database 
+
+  recollect.react.client:
+    image: recollect.react.client
+    container_name: recollect.react.client
+    ports:
+        - "5000:5000"
+    depends_on:
+        - recollect.server
+
+
+
 

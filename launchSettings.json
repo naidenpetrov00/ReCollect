@@ -4,7 +4,9 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "recollect.server": "StartDebugging"
+        "recollect.server": "StartDebugging",
+        "recollect.database": "StartWithoutDebugging",
+        "recollect.react.client": "StartWithoutDebugging"
       }
     }
   }
