@@ -7,7 +7,7 @@ public class PackingList : BaseAuditableEntity, IAgregateRoot
 {
     private readonly IList<PackingItem> packingItems = new List<PackingItem>();
 
-    public PackingListName? Name { get; private set; }
+    public PackingListName? Name { get; set; }
 
     public Localization? Localization { get; private set; }
 

@@ -3,6 +3,7 @@ namespace ReCollect.Server;
 using ReCollect.Application;
 using ReCollect.Infrastructure;
 using ReCollect.Infrastructure.SeedWork;
+using ReCollect.Server.Infrastructure;
 
 public class Program
 {
@@ -31,6 +32,8 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+
+        app.MapEndpoints();
 
         app.UseHttpsRedirection();
 

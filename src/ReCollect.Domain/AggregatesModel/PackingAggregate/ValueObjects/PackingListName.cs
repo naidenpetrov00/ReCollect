@@ -4,14 +4,11 @@ using System.Collections.Generic;
 
 public class PackingListName : ValueObject
 {
-    public PackingListName() { }
-
     public PackingListName(string value)
     {
         Guard.Against.NullOrWhiteSpace(value, "Packing list name cannot be empty.");
 
         this.Value = value;
-        var pl = new PackingListName("as");
     }
 
     public string Value { get; }
