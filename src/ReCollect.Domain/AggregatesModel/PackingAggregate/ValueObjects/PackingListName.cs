@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class PackingListName : ValueObject
 {
+    public PackingListName() { }
+
     public PackingListName(string value)
     {
         Guard.Against.NullOrWhiteSpace(value, "Packing list name cannot be empty.");

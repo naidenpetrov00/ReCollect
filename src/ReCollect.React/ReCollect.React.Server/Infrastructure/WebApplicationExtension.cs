@@ -27,9 +27,6 @@ public static class WebApplicationExtension
     {
         var groupName = groupBase.GetType().Name;
 
-        return app.MapGroup($"api/{groupName}")
-            .WithGroupName(groupName)
-            .WithTags(groupName)
-            .WithOpenApi();
+        return app.MapGroup(groupName).WithGroupName(groupName).WithTags(groupName).WithOpenApi();
     }
 }

@@ -36,6 +36,9 @@ services:
   recollect.react.client:
     image: recollect.react.client
     container_name: recollect.react.client
+    build:
+        context: src/ReCollect.React/recollect.react.client
+        dockerfile: Dockerfile
     ports:
         - "5000:5000"
     depends_on:

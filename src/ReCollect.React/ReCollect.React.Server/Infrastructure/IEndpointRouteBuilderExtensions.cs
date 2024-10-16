@@ -5,18 +5,18 @@ using Ardalis.GuardClauses;
 
 public static class IEndpointRouteBuilderExtensions
 {
-    public static IEndpointRouteBuilder MapGet(
-        this IEndpointRouteBuilder builder,
-        Delegate handler,
-        [StringSyntax("Route")] string pattern = ""
-    )
-    {
-        Guard.Against.AnonymousMethod(handler);
+    //public static IEndpointRouteBuilder MapGet(
+    //    this IEndpointRouteBuilder builder,
+    //    Delegate handler,
+    //    [StringSyntax("Route")] string pattern = ""
+    //)
+    //{
+    //    Guard.Against.AnonymousMethod(handler);
 
-        builder.MapGet(pattern, handler).WithName(handler.Method.Name);
+    //    builder.MapGet(pattern, handler).WithName(handler.Method.Name);
 
-        return builder;
-    }
+    //    return builder;
+    //}
 
     public static IEndpointRouteBuilder MapPost(
         this IEndpointRouteBuilder builder,

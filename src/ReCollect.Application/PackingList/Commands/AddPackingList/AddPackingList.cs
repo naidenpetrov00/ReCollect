@@ -20,10 +20,9 @@ public class AddPackingListCommandHandler : IRequestHandler<AddPackingList, int>
 
     public async Task<int> Handle(AddPackingList request, CancellationToken cancellationToken)
     {
-        var packingListName = new PackingListName(request.Name);
-        var packingList = new PackingList { Name = packingListName };
-
+        var packingList = new PackingList { Name = request.Name };
         dbContext.PackingLists.Add(packingList);
+
         await this.dbContext.SaveChangesAsync(cancellationToken);
 
         return packingList.Id;
