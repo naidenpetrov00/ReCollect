@@ -28,9 +28,14 @@ public class Program
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
+            System.Console.WriteLine("Development");
             await app.InitializeDatabaseAsync();
             app.UseSwagger();
             app.UseSwaggerUI();
+        }
+        else
+        {
+            System.Console.WriteLine("Production");
         }
 
         app.MapEndpoints();
