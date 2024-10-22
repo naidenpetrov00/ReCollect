@@ -7,14 +7,14 @@ public class Localization : ValueObject
 {
     public Localization() { }
 
-    public Localization(string City, string Country)
+    public Localization(string city, string country)
     {
-        this.City = City;
-        this.Country = Country;
+        this.City = city;
+        this.Country = country;
     }
 
-    public string City { get; }
-    public string Country { get; }
+    public string? City { get; }
+    public string? Country { get; }
 
     public static Localization Create(string value)
     {
@@ -27,7 +27,10 @@ public class Localization : ValueObject
 
     protected override IEnumerable<object> GetEqualityComponents()
     {
-        yield return City;
-        yield return Country;
+        Guard.Against.Null(this.City);
+        Guard.Against.Null(this.Country);
+
+        yield return this.City;
+        yield return this.Country;
     }
 }

@@ -5,7 +5,7 @@ using ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;
 
 public class PackingItemDto
 {
-    public string Name { get; init; }
+    public string? Name { get; init; }
     public uint Quantity { get; init; }
     public bool IsPacked { get; init; }
 

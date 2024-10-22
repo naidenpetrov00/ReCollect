@@ -7,11 +7,11 @@ public class PackingListDto
 {
     public int Id { get; init; }
 
-    public string Name { get; init; }
+    public string? Name { get; init; }
 
-    public LocalizationDto LocalizationDto { get; init; }
+    public LocalizationDto? LocalizationDto { get; init; }
 
-    public IEnumerable<PackingItemDto> Items { get; init; }
+    public IEnumerable<PackingItemDto>? Items { get; init; }
 
     public class Mapping : Profile
     {

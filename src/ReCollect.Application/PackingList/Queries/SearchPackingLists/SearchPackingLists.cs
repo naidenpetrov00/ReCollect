@@ -9,7 +9,7 @@ using ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;
 
 public class SearchPackingLists : IRequest<IEnumerable<PackingListDto>>
 {
-    public string SearchPhrase { get; set; }
+    public string? SearchPhrase { get; set; }
 }
 
 public class SearchPackingListsHandler
@@ -35,7 +35,7 @@ public class SearchPackingListsHandler
         {
             // Warning (Ef may not be able to convert)
             searchQuery = searchQuery.Where(pl =>
-                EF.Functions.Like(pl.Name, $"%{request.SearchPhrase}%")
+                EF.Functions.Like(pl.Name!, $"%{request.SearchPhrase}%")
             );
         }
 

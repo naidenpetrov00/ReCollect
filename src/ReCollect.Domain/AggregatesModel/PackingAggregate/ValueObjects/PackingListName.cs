@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public class PackingListName : ValueObject
 {
+#pragma warning disable CS8618
     public PackingListName() { }
+#pragma warning disable CS8618
 
     public PackingListName(string value)
     {

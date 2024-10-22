@@ -22,11 +22,23 @@ public static class DependencyInjection
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
         );
 
+#if(UseDocker)
         var mssqlConnectionString = configuration
             .GetOptions<MssqlOptions>("MSSQL")
-            //.ConnectionString;
-            .ConnectionStringDocker;
-        Guard.Against.Null(mssqlConnectionString, message: "Connection String not found!");
+            .ConnectionStringDockerCompose;
+        Guard.Against.Null(
+            mssqlConnectionString,
+            message: "Connection String for docker composed not found!"
+        );
+#else
+        var mssqlConnectionString = configuration
+            .GetOptions<MssqlOptions>("MSSQL")
+            .ConnectionStringDotNetBuildWithDockerDb;
+        Guard.Against.Null(
+            mssqlConnectionString,
+            message: "Connection String for docker db only not found!"
+        );
+#endif
 
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(mssqlConnectionString)

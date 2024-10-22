@@ -26,6 +26,7 @@ services:
     container_name: recollect.server
     image: recollect.server
     environment:
+        - DOTNET_RUNNING_IN_CONTAINER=true
         - ASPNETCORE_ENVIRONMENT=Development 
     build:
         context: .
