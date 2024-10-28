@@ -4,9 +4,7 @@ using System.Collections.Generic;
 
 public class PackingListName : ValueObject
 {
-#pragma warning disable CS8618
     public PackingListName() { }
-#pragma warning disable CS8618
 
     public PackingListName(string value)
     {
@@ -15,12 +13,16 @@ public class PackingListName : ValueObject
         this.Value = value;
     }
 
-    public string Value { get; }
+    public string? Value { get; private set; }
 
-    protected override IEnumerable<object> GetEqualityComponents() =>
-        throw new NotImplementedException();
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        Guard.Against.Null(this.Value);
 
-    public static implicit operator string(PackingListName name) => name.Value;
+        yield return this.Value;
+    }
 
-    public static implicit operator PackingListName(string name) => new(name);
+    public static implicit operator string(PackingListName name) => name.Value!;
+
+    public static explicit operator PackingListName(string name) => new(name);
 }

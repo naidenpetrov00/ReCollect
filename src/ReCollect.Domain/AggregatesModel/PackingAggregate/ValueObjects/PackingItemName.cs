@@ -16,5 +16,5 @@ public class PackingItemName
     public static implicit operator string(PackingItemName packingItemName) =>
         packingItemName.Value;
 
-    public static implicit operator PackingItemName(string value) => new(value);
+    public static explicit operator PackingItemName(string value) => new(value);
 }

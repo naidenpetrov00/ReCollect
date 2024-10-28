@@ -30,10 +30,6 @@ public class GetPackingListHandler : IRequestHandler<GetPackingList, PackingList
         CancellationToken cancellationToken
     )
     {
-        var loc1 = new Localization(null, "");
-        var loc2 = new Localization(null, "");
-        var result = loc1.Equals(loc2);
-
         var packingList = await this
             .packingLists.Where(pl => pl.Id == request.Id)
             .AsNoTracking()

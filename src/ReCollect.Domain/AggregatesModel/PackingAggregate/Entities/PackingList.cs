@@ -19,7 +19,7 @@ public class PackingList : BaseAuditableEntity, IAgregateRoot
         Guard.Against.InvalidInput(
             item,
             nameof(item),
-            i => this.packingItems.Contains(i),
+            this.packingItems.Contains,
             $"Packing item '{item.Name?.Value}' already exists."
         );
 

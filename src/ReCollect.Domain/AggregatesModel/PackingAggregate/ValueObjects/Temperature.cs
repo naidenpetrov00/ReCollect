@@ -1,20 +1,17 @@
 ﻿namespace ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
-using ReCollect.Domain.Exceptions;
-
 public record Temperature
 {
     public Temperature(double value)
     {
-        if (value is < -100 or > 100)
-            throw new InvalidTemperatureException(value);
+        Guard.Against.OutOfRange(value, nameof(value), -100, 100);
 
         this.Value = value;
     }
 
-    public double Value { get; }
+    public double Value { get; private set; }
 
     public static implicit operator double(Temperature temperature) => temperature.Value;
 
-    public static implicit operator Temperature(double temperature) => new(temperature);
+    public static explicit operator Temperature(double value) => new(value);
 }
