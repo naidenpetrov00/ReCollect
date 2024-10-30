@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ReCollect.Application.PackingList.Commands.AddPackingList;
 using ReCollect.Application.PackingList.Queries.GetPackingList;
+using ReCollect.Application.SeedWork.Models;
 using ReCollect.Server.Infrastructure;
 
 public class PackingList : EndpointGroupBase
@@ -14,8 +15,17 @@ public class PackingList : EndpointGroupBase
         //app.MapGroup(this).MapGet(GetPackingListById).MapPost(AddPackingList);
         var group = app.MapGroup(this.GetType().Name);
 
-        group.MapGet("{packingListId:int}", GetPackingListById);
+        group.MapGet("/{packingListId:int}", GetPackingListById);
+        group.MapGet("/withReturn/{packingListId:int}", GetPackingListByIdWithResultReturn);
         group.MapPost("/add", AddPackingList);
+    }
+
+    private static IResult GetPackingListByIdWithResultReturn(
+        ISender sender,
+        [FromRoute] int packingListId
+    )
+    {
+        return Results.Json(sender.Send(new GetPackingList(packingListId)));
     }
 
     private static Task<PackingListDto> GetPackingListById(

@@ -5,6 +5,8 @@ using Ardalis.GuardClauses;
 using MediatR;
 using ReCollect.Application.SeedWork.Interfaces;
 using ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;
+using ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
+
 
 public record AddPackingItem(int Id, string Name, uint Quantity) : IRequest;
 
@@ -25,7 +27,7 @@ internal sealed class AddPackingItemHandler : IRequestHandler<AddPackingItem>
 
         Guard.Against.NotFound(request.Id, packingList);
 
-        var packingItem = new PackingItem { Name = request.Name, Quantity = request.Quantity };
+        var packingItem = new PackingItem { Name = (PackingItemName)request.Name, Quantity = request.Quantity };
         packingList.AddItem(packingItem);
 
         await this.dbContext.SaveChangesAsync(cancellationToken);

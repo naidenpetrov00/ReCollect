@@ -1,7 +1,5 @@
 ﻿namespace ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
-using ReCollect.Domain.Exceptions;
-
 public class PackingItemName
 {
     public PackingItemName(string value)
