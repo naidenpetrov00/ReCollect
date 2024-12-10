@@ -21,8 +21,8 @@ public sealed class ApplicationDbContext : IdentityDbContext<ApplicationUser>, I
         this.mediatR = mediatR;
     }
 
-    public DbSet<PackingList> PackingLists { get; set; }
-    public DbSet<PackingItem> PackingItems { get; set; }
+    public DbSet<PackingList> PackingLists => Set<PackingList>();
+    public DbSet<PackingItem> PackingItems => Set<PackingItem>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

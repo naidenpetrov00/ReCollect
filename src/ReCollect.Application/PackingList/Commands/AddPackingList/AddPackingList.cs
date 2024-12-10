@@ -9,14 +9,9 @@ using ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
 public record AddPackingList(string Name) : IRequest<int>;
 
-public class AddPackingListCommandHandler : IRequestHandler<AddPackingList, int>
+public class AddPackingListCommandHandler(IApplicationDbContext dbContext) : IRequestHandler<AddPackingList, int>
 {
-    private readonly IApplicationDbContext dbContext;
-
-    public AddPackingListCommandHandler(IApplicationDbContext dbContext)
-    {
-        this.dbContext = dbContext;
-    }
+    private readonly IApplicationDbContext dbContext = dbContext;
 
     public async Task<int> Handle(AddPackingList request, CancellationToken cancellationToken)
     {

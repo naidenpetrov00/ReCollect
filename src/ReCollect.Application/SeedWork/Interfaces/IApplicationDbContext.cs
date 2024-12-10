@@ -5,9 +5,9 @@ using ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;
 
 public interface IApplicationDbContext
 {
-    DbSet<PackingList> PackingLists { get; set; }
+    DbSet<PackingList> PackingLists { get; }
 
-    DbSet<PackingItem> PackingItems { get; set; }
+    DbSet<PackingItem> PackingItems { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

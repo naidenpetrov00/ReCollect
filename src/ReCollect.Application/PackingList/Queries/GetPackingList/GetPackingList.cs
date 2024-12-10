@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using ReCollect.Application.SeedWork.Interfaces;
 using ReCollect.Application.SeedWork.Security;
 using ReCollect.Domain.AggregatesModel.PackingAggregate.Entities;
-using ReCollect.Domain.AggregatesModel.PackingAggregate.ValueObjects;
 
 [Authorize]
 public record GetPackingList(int Id) : IRequest<PackingListDto>;

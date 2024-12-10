@@ -21,8 +21,7 @@ public static class DependencyInjection
         services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
         );
-
-#if(UseDocker)
+#if UseDocker
         var mssqlConnectionString = configuration
             .GetOptions<MssqlOptions>("MSSQL")
             .ConnectionStringDockerCompose;
