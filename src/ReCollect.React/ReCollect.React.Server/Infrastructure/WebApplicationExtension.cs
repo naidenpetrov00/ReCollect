@@ -23,10 +23,10 @@ public static class WebApplicationExtension
         return app;
     }
 
-    public static RouteGroupBuilder MapGroup(this WebApplication app, EndpointGroupBase groupBase)
+    public static RouteGroupBuilder MapGroupp(this WebApplication app, EndpointGroupBase groupBase)
     {
         var groupName = groupBase.GetType().Name;
 
-        return app.MapGroup(groupName).WithGroupName(groupName).WithTags(groupName).WithOpenApi();
+        return app.MapGroup(groupName).WithTags(groupName).WithOpenApi();
     }
 }

@@ -10,9 +10,13 @@ public class PackingList : EndpointGroupBase
 {
     public override void Map(WebApplication app)
     {
+        // var group = app.MapGroupp(this);
         var group = app.MapGroup(this.GetType().Name);
 
-        group.MapGet("/{packingListId:int}", GetPackingListById);
+        group
+            .MapGet("/{packingListId:int}", GetPackingListById)
+            .Produces<PackingListDto>(StatusCodes.Status200OK)
+            .WithName("Get packing list by id");
         group.MapGet("/withReturn/{packingListId:int}", GetPackingListByIdWithResultReturn);
         group.MapPost("/add", AddPackingList);
     }
